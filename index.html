@@ -235,13 +235,27 @@
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-a-window" class="toc-h2 toc-link" data-title="Getting started">Create a window</a>
+                    <a href="#creating-a-window" class="toc-h2 toc-link" data-title="Getting started">Creating a window</a>
                   </li>
                   <li>
                     <a href="#implementing-lifecycle-methods" class="toc-h2 toc-link" data-title="Getting started">Implementing lifecycle methods</a>
                   </li>
                   <li>
                     <a href="#customize-the-window" class="toc-h2 toc-link" data-title="Getting started">Customize the window</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-the-confirm-window" class="toc-h2 toc-link" data-title="Getting started">Cancel the confirm window</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#creating-games" class="toc-h1 toc-link" data-title="Creating Games">Creating Games</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating-resources" class="toc-h2 toc-link" data-title="Creating Games">Creating resources</a>
+                  </li>
+                  <li>
+                    <a href="#adding-objects" class="toc-h2 toc-link" data-title="Creating Games">Adding objects</a>
                   </li>
               </ul>
           </li>
@@ -261,6 +275,9 @@
           </li>
           <li>
             <a href="#building-friceengine" class="toc-h1 toc-link" data-title="Building FriceEngine">Building FriceEngine</a>
+          </li>
+          <li>
+            <a href="#github-release" class="toc-h1 toc-link" data-title="GitHub release">GitHub release</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -307,7 +324,7 @@ The flappy bird demo is currently the only demo that uses the up-to-date API. It
 <p>TODO</p>
 <h1 id='getting-started'>Getting started</h1>
 <p>This chapter shows the most basic usage of FriceEngine.</p>
-<h2 id='create-a-window'>Create a window</h2>
+<h2 id='creating-a-window'>Creating a window</h2>
 <p>First we need to create a game window.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.Game</span><span class="o">;</span>
 
@@ -414,7 +431,9 @@ If you override <code>onExit</code>, don't forget to terminate your program.
 
 <p>The <code>JvmDrawer</code> refers to <code>org.frice.game.platform.adapter.JvmDrawer</code>,
 which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
-<h2 id='customize-the-window'>Customize the window</h2><h3 id='hiding-the-fps'>Hiding the fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<h2 id='customize-the-window'>Customize the window</h2>
+<p>You can customize the game window in the <code>onInit</code> method.</p>
+<h3 id='hiding-the-fps'>Hiding the fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">showFPS</span> <span class="p">=</span> <span class="k">false</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </code></pre>
@@ -472,8 +491,126 @@ If you don&#39;t want to see that, you can use this code.</p>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">title</span> <span class="p">=</span> <span class="s">"Your awesome title"</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">)</span>
 </code></pre>
-<p>This changes the window title. It&#39;s a method of <code>JFrame</code> but it&#39;s guaranteed to work.</p>
-<h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
+<p>This changes the window title.</p>
+
+<p>It&#39;s a method of <code>JFrame</code> on JVM, but it&#39;s guaranteed to work.</p>
+<h2 id='cancel-the-confirm-window'>Cancel the confirm window</h2>
+<p>As you see, there&#39;s a confirm window when you click the exit button that might be a little noisy.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExit</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">override</span> <span class="k">fun</span> <span class="nf">onExit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">System</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">override</span> <span class="k">def</span> <span class="n">onExit</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+</code></pre>
+<p>This happens in <code>Game.onExit</code>.</p>
+
+<p>To cancel it you can override it, and exit directly.</p>
+
+<p>If you don&#39;t call <code>System.exit(0)</code>, you cannot close the window through clicking the exit button.
+If you invoke <code>super.onExit()</code>, the confirm window will still appear, so you might not invoke it.</p>
+
+<p><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+
+<p>Now you have some basic knowledge about FriceEngine.
+It&#39;s time to create real games with it!</p>
+<h1 id='creating-games'>Creating Games</h1>
+<p>FriceEngine manages game objects through <code>FObject</code>s.</p>
+
+<p>All images, rectangles, ovals, texts, buttons appears on the screen are called &quot;Object&quot;,
+which corresponds to <code>FObject</code> in codes.</p>
+
+<p>Resources like colors, shapes and images are treated as <code>FResource</code>s.
+<code>FObject</code>s may hold some <code>FResource</code>s, i.e. an image object (<code>ImageObject</code>, which extends <code>FObject</code>) holds an image resource (<code>ImageResource</code>, which extends <code>FResource</code>).</p>
+<h2 id='creating-resources'>Creating resources</h2><h3 id='color-resources'>Color Resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.graphics.ColorResource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="o">;</span>
+
+<span class="n">ColorResource</span> <span class="n">colorResource0</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorResource</span><span class="o">(</span><span class="mh">0xFF00FF</span><span class="o">);</span>
+<span class="n">ColorResource</span> <span class="n">colorResource1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorResource</span><span class="o">(</span><span class="s">"FF00FF"</span><span class="o">);</span>
+<span class="n">ColorResource</span> <span class="n">colorResource2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorResource</span><span class="o">(</span><span class="k">new</span> <span class="n">Color</span><span class="o">(...));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.graphics.ColorResource</span>
+<span class="k">import</span> <span class="nn">java.awt.Color</span>
+
+<span class="kd">val</span> <span class="py">colorResource0</span> <span class="p">=</span> <span class="n">ColorResource</span><span class="p">(</span><span class="m">0</span><span class="n">xFF00FF</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">colorResource1</span> <span class="p">=</span> <span class="n">ColorResource</span><span class="p">(</span><span class="s">"FF00FF"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">colorResource2</span> <span class="p">=</span> <span class="n">ColorResource</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="o">..</span><span class="p">.))</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.graphics.ColorResource</span>
+<span class="k">import</span> <span class="nn">java.awt.Color</span>
+
+<span class="k">val</span> <span class="n">colorResource0</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ColorResource</span><span class="o">(</span><span class="mh">0xFF00FF</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">colorResource1</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ColorResource</span><span class="o">(</span><span class="s">"FF00FF"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">colorResource2</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ColorResource</span><span class="o">(</span><span class="k">new</span> <span class="nc">Color</span><span class="o">(...))</span>
+</code></pre>
+<p>This is a simple example of creating a color resource.
+You can either pass an integer, a string, or a <code>java.awt.Color</code> object to the constructor.</p>
+
+<p>But in most cases, we use some <code>public static final</code> objects, like:</p>
+
+<p><code>
+GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELLOW, SHIT_YELLOW, ORANGE, PINK
+</code></p>
+
+<p>and so on.</p>
+<h3 id='image-resources'>Image Resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span><span class="o">;</span>
+
+<span class="n">ImageResource</span> <span class="n">imageResource</span> <span class="o">=</span> <span class="n">ImageResource</span><span class="o">.</span><span class="na">fromPath</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span>
+
+<span class="kd">val</span> <span class="py">imageResource</span> <span class="p">=</span> <span class="n">ImageResource</span><span class="p">.</span><span class="n">fromPath</span><span class="p">(</span><span class="s">"./1.png"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span>
+
+<span class="k">val</span> <span class="n">imageResource</span> <span class="k">=</span> <span class="nc">ImageResource</span><span class="o">.</span><span class="n">fromPath</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">)</span>
+</code></pre>
+<p>We can create image resources either by invoking the constructors of the subclasses of <code>ImageResource</code> or by invoking the factory methods.</p>
+
+<p>Here&#39;s a list of the factory methods:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: left">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>fromImage(image: FriceImage)</code></td>
+<td style="text-align: left">Creates an image from a FriceImage</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>create(image: FriceImage)</code></td>
+<td style="text-align: left">Alias of fromImage</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>fromPath(path: String)</code></td>
+<td style="text-align: left">Creates an image from file path</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>fromWeb(url: String)</code></td>
+<td style="text-align: left">Creates an image from url as path</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>empty()</code></td>
+<td style="text-align: left">Creates an empty image</td>
+</tr>
+</tbody></table>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span><span class="o">;</span>
+
+<span class="n">ImageResource</span> <span class="n">imageResource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span>
+
+<span class="kd">val</span> <span class="py">imageResource</span> <span class="p">=</span> <span class="n">FileImageResource</span><span class="p">(</span><span class="s">"./1.png"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span>
+
+<span class="k">val</span> <span class="n">imageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">)</span>
+</code></pre>
+<p>And here&#39;s a simple example of using the constructor of a subclass.</p>
+<h2 id='adding-objects'>Adding objects</h2><h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
 
@@ -517,7 +654,11 @@ If you don&#39;t want to see that, you can use this code.</p>
 </span><span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
 <span class="c1">// exit playing
 </span><span class="n">player</span><span class="o">.</span><span class="n">exit</span><span class="o">()</span>
-</code></pre><h2 id='database'>Database</h2><h2 id='boolarray'>BoolArray</h2><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span><span class="o">;</span>
+</code></pre><h2 id='database'>Database</h2>
+<p>FriceEngine provides a key-value based database, and there&#39;re two implementations.</p>
+
+<p>TODO</p>
+<h2 id='boolarray'>BoolArray</h2><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span><span class="o">;</span>
 
 <span class="n">BoolArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
 <span class="n">array</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
@@ -579,7 +720,9 @@ Don't modify the long array.
 
 <span class="c"># You have gradle executable in $PATH, you can build it with</span>
 <span class="gp">$ </span>gradle assembleRelease
-</code></pre>
+</code></pre><h1 id='github-release'>GitHub release</h1>
+<p>See https://github.com/icela/FriceEngine/releases</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
