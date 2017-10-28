@@ -241,10 +241,10 @@
                     <a href="#implementing-lifecycle-methods" class="toc-h2 toc-link" data-title="Getting started">Implementing lifecycle methods</a>
                   </li>
                   <li>
-                    <a href="#customize-the-window" class="toc-h2 toc-link" data-title="Getting started">Customize the window</a>
+                    <a href="#customizing-the-window" class="toc-h2 toc-link" data-title="Getting started">Customizing the window</a>
                   </li>
                   <li>
-                    <a href="#cancel-the-confirm-window" class="toc-h2 toc-link" data-title="Getting started">Cancel the confirm window</a>
+                    <a href="#cancelling-the-confirm-window" class="toc-h2 toc-link" data-title="Getting started">Cancelling the confirm window</a>
                   </li>
               </ul>
           </li>
@@ -252,16 +252,45 @@
             <a href="#creating-games" class="toc-h1 toc-link" data-title="Creating Games">Creating Games</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creating-resources" class="toc-h2 toc-link" data-title="Creating Games">Creating resources</a>
+                    <a href="#creating-simple-resources" class="toc-h2 toc-link" data-title="Creating Games">Creating simple resources</a>
                   </li>
                   <li>
-                    <a href="#adding-objects" class="toc-h2 toc-link" data-title="Creating Games">Adding objects</a>
+                    <a href="#creating-objects" class="toc-h2 toc-link" data-title="Creating Games">Creating objects</a>
+                  </li>
+                  <li>
+                    <a href="#animations" class="toc-h2 toc-link" data-title="Creating Games">Animations</a>
+                  </li>
+                  <li>
+                    <a href="#collision-detection" class="toc-h2 toc-link" data-title="Creating Games">Collision detection</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#higher-level-usage" class="toc-h1 toc-link" data-title="Higher Level Usage">Higher Level Usage</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating-complex-resources" class="toc-h2 toc-link" data-title="Higher Level Usage">Creating complex resources</a>
+                  </li>
+                  <li>
+                    <a href="#using-customdraw" class="toc-h2 toc-link" data-title="Higher Level Usage">Using customDraw</a>
+                  </li>
+                  <li>
+                    <a href="#customizing-animations" class="toc-h2 toc-link" data-title="Higher Level Usage">Customizing animations</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#misc" class="toc-h1 toc-link" data-title="Misc">Misc</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#color-utils" class="toc-h2 toc-link" data-title="Misc">Color utils</a>
+                  </li>
+                  <li>
+                    <a href="#file-utils" class="toc-h2 toc-link" data-title="Misc">File utils</a>
+                  </li>
+                  <li>
+                    <a href="#alert-dialogs" class="toc-h2 toc-link" data-title="Misc">Alert dialogs</a>
+                  </li>
                   <li>
                     <a href="#playing-music" class="toc-h2 toc-link" data-title="Misc">Playing music</a>
                   </li>
@@ -431,14 +460,14 @@ If you override <code>onExit</code>, don't forget to terminate your program.
 
 <p>The <code>JvmDrawer</code> refers to <code>org.frice.game.platform.adapter.JvmDrawer</code>,
 which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
-<h2 id='customize-the-window'>Customize the window</h2>
+<h2 id='customizing-the-window'>Customizing the window</h2>
 <p>You can customize the game window in the <code>onInit</code> method.</p>
 <h3 id='hiding-the-fps'>Hiding the fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">showFPS</span> <span class="p">=</span> <span class="k">false</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </code></pre>
 <p>If you don&#39;t want to display the fps you can use this code.</p>
-<h3 id='customize-window-size'>Customize window size</h3><pre class="highlight java tab-java"><code><span class="n">setSize</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<h3 id='customizing-window-size'>Customizing window size</h3><pre class="highlight java tab-java"><code><span class="n">setSize</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
 <span class="c1">// or</span>
 <span class="n">setSize</span><span class="o">(</span><span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">setSize</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
@@ -465,13 +494,19 @@ which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
 
 <p>The first argument refers to the distance to the left side of the screen,
 and the second refers to the distance to the top of the screen.</p>
-<h3 id='customizing-the-bounds'>Customizing the bounds</h3><pre class="highlight java tab-java"><code><span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<h3 id='customizing-the-bounds'>Customizing the bounds</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.awt.Rectangle</span><span class="o">;</span>
+
+<span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
 <span class="c1">// or</span>
 <span class="n">setBounds</span><span class="o">(</span><span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">setBounds</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">java.awt.Rectangle</span>
+
+<span class="n">setBounds</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
 <span class="c1">// or
 </span><span class="n">bounds</span> <span class="p">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">java.awt.Rectangle</span>
+
+<span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
 <span class="c1">// or
 </span><span class="n">setBounds</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rectangle</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
 </code></pre>
@@ -479,7 +514,7 @@ and the second refers to the distance to the top of the screen.</p>
 
 <p>The four parameters refer to the width, the height,
 the distance to the left side of the screen, and the distance to the top of the screen respectively.</p>
-<h3 id='color-change-when-lose-focus'>Color change when lose focus</h3><pre class="highlight java tab-java"><code><span class="n">setLoseFocusChangeColor</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<h3 id='changing-color-when-lose-focus'>Changing color when lose focus</h3><pre class="highlight java tab-java"><code><span class="n">setLoseFocusChangeColor</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">loseFocusChangeColor</span> <span class="p">=</span> <span class="k">false</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setLoseFocusChangeColor</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </code></pre>
@@ -487,14 +522,14 @@ the distance to the left side of the screen, and the distance to the top of the 
 If you don&#39;t want to see that, you can use this code.</p>
 
 <p>Of course, if you expect it to happen, replace <code>false</code> with <code>true</code>.</p>
-<h3 id='change-title-text'>Change title text</h3><pre class="highlight java tab-java"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">);</span>
+<h3 id='changing-title-text'>Changing title text</h3><pre class="highlight java tab-java"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">title</span> <span class="p">=</span> <span class="s">"Your awesome title"</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">)</span>
 </code></pre>
 <p>This changes the window title.</p>
 
 <p>It&#39;s a method of <code>JFrame</code> on JVM, but it&#39;s guaranteed to work.</p>
-<h2 id='cancel-the-confirm-window'>Cancel the confirm window</h2>
+<h2 id='cancelling-the-confirm-window'>Cancelling the confirm window</h2>
 <p>As you see, there&#39;s a confirm window when you click the exit button that might be a little noisy.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExit</span><span class="o">()</span> <span class="o">{</span>
@@ -529,7 +564,7 @@ which corresponds to <code>FObject</code> in codes.</p>
 
 <p>Resources like colors, shapes and images are treated as <code>FResource</code>s.
 <code>FObject</code>s may hold some <code>FResource</code>s, i.e. an image object (<code>ImageObject</code>, which extends <code>FObject</code>) holds an image resource (<code>ImageResource</code>, which extends <code>FResource</code>).</p>
-<h2 id='creating-resources'>Creating resources</h2><h3 id='color-resources'>Color Resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.graphics.ColorResource</span><span class="o">;</span>
+<h2 id='creating-simple-resources'>Creating simple resources</h2><h3 id='color-resources'>Color resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.graphics.ColorResource</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="o">;</span>
 
 <span class="n">ColorResource</span> <span class="n">colorResource0</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorResource</span><span class="o">(</span><span class="mh">0xFF00FF</span><span class="o">);</span>
@@ -558,7 +593,7 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 </code></p>
 
 <p>and so on.</p>
-<h3 id='image-resources'>Image Resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span><span class="o">;</span>
+<h3 id='simple-image-resources'>Simple image resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span><span class="o">;</span>
 
 <span class="n">ImageResource</span> <span class="n">imageResource</span> <span class="o">=</span> <span class="n">ImageResource</span><span class="o">.</span><span class="na">fromPath</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.ImageResource</span>
@@ -600,17 +635,49 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 </tr>
 </tbody></table>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.frice.game.resource.image.WebImageResource</span><span class="o">;</span>
 
-<span class="n">ImageResource</span> <span class="n">imageResource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
+<span class="n">ImageResource</span> <span class="n">fileImageResource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
+<span class="n">ImageResource</span> <span class="n">webImageResource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebImageResource</span><span class="o">(</span><span class="s">"https://icela.github.io/images/logo.png"</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span>
+<span class="k">import</span> <span class="nn">org.frice.game.resource.image.WebImageResource</span>
 
-<span class="kd">val</span> <span class="py">imageResource</span> <span class="p">=</span> <span class="n">FileImageResource</span><span class="p">(</span><span class="s">"./1.png"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">fileImageResource</span> <span class="p">=</span> <span class="n">FileImageResource</span><span class="p">(</span><span class="s">"./1.png"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">webImageResource</span> <span class="p">=</span> <span class="n">WebImageResource</span><span class="p">(</span><span class="s">"https://icela.github.io/images/logo.png"</span><span class="p">)</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.resource.image.FileImageResource</span>
+<span class="k">import</span> <span class="nn">org.frice.game.resource.image.WebImageResource</span>
 
-<span class="k">val</span> <span class="n">imageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">fileImageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">webImageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">WebImageResource</span><span class="o">(</span><span class="s">"https://icela.github.io/images/logo.png"</span><span class="o">)</span>
 </code></pre>
-<p>And here&#39;s a simple example of using the constructor of a subclass.</p>
-<h2 id='adding-objects'>Adding objects</h2><h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
+<p>And here&#39;s a simple example of using the <code>FileImageResource</code> and <code>WebImageResource</code>.</p>
+<h2 id='creating-objects'>Creating objects</h2>
+<p>TODO</p>
+<h2 id='animations'>Animations</h2>
+<p>TODO</p>
+<h2 id='collision-detection'>Collision detection</h2>
+<p>TODO</p>
+<h1 id='higher-level-usage'>Higher Level Usage</h1><h2 id='creating-complex-resources'>Creating complex resources</h2><h3 id='particle-resources'>Particle resources</h3>
+<p>TODO</p>
+<h3 id='curve-resources'>Curve resources</h3>
+<p>TODO</p>
+<h3 id='function-resources'>Function resources</h3>
+<p>TODO</p>
+<h3 id='complex-image-resources'>Complex image resources</h3>
+<p><code>PartImageResource</code> and <code>FrameImageResource</code> are based on other <code>ImageResource</code> objects.</p>
+
+<p>TODO</p>
+<h2 id='using-customdraw'>Using customDraw</h2>
+<p>TODO</p>
+<h2 id='customizing-animations'>Customizing animations</h2>
+<p>TODO</p>
+<h1 id='misc'>Misc</h1><h2 id='color-utils'>Color utils</h2>
+<p>TODO</p>
+<h2 id='file-utils'>File utils</h2>
+<p>TODO</p>
+<h2 id='alert-dialogs'>Alert dialogs</h2>
+<p>TODO</p>
+<h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
 
