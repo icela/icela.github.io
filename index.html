@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>FriceEngine Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;java&quot;,&quot;kotlin&quot;,&quot;scala&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="kotlin">kotlin</a>
+              <a href="#" data-language-name="scala">scala</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-window" class="toc-h2 toc-link" data-title="Getting started">Create a window</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#misc" class="toc-h1 toc-link" data-title="Misc">Misc</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#playing-music" class="toc-h2 toc-link" data-title="Misc">Playing music</a>
+                  </li>
+                  <li>
+                    <a href="#database" class="toc-h2 toc-link" data-title="Misc">Database</a>
+                  </li>
+                  <li>
+                    <a href="#boolarray" class="toc-h2 toc-link" data-title="Misc">BoolArray</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#building-friceengine" class="toc-h1 toc-link" data-title="Building FriceEngine">Building FriceEngine</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/icela/FriceEngine'>FriceEngine for JVM</a></li>
+            <li><a href='https://github.com/icela/FriceEngine-CSharp'>FriceEngine for C#</a></li>
+            <li><a href='https://github.com/icela/FriceEngine-Ruby'>FriceEngine for Ruby</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='getting-started'>Getting started</h1>
+<p>This chapter shows the most basic usage of FriceEngine.</p>
+
+<aside class="notice">
+This reference does not show how to import FriceEngine as a library in your language. It's just API doc.
+</aside>
+<h2 id='create-a-window'>Create a window</h2>
+<p>First we need to create a game window.</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.Game</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyGame</span> <span class="kd">extends</span> <span class="n">Game</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">launch</span><span class="o">(</span><span class="n">MyGame</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.Game</span>
+
+<span class="kd">object</span> <span class="nc">MyGame</span> <span class="p">:</span> <span class="n">Game</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">@JvmStatic</span>
+  <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">MyGame</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.Game</span>
+
+<span class="k">object</span> <span class="nc">MyGame</span> <span class="k">extends</span> <span class="nc">Game</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nc">Game</span><span class="o">.</span><span class="n">launch</span><span class="o">(</span><span class="nc">MyGame</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre>
+<p>You should create a class extending the <code>org.frice.game.Game</code> class.
+This class has an optional constructor parameter, which will be introduced later.
+We invoke the empty one first.</p>
+
+<p>For convenience, the Kotlin and Scala version uses <code>object</code> instead of <code>class</code> because we want an easier way to
+write a main function.</p>
+
+<p>We invoke the <code>Game.launch</code> method in the main function and pass the <code>class</code> of your game class to it.</p>
+
+<p>You can now run the main function to see if it successfully creates a window.</p>
+<h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
+<p>FriceEngine provides very simple API to play music stored in files.</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
+
+<span class="n">AudioManager</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.play</span>
+
+<span class="n">play</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span>
+
+<span class="nc">AudioManager</span><span class="o">.</span><span class="n">play</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
+</code></pre>
+<p>Supported format:</p>
+
+<ul>
+<li>mp3</li>
+<li>wav</li>
+</ul>
+
+<p>And you can replace the path string with a <code>File</code> object.</p>
+
+<p>You can also create an <code>AudioPlayer</code> object to better control the playing of the music
+(i.e. start the music later, or stop it while playing).</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
+
+<span class="n">AudioPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
+<span class="n">player</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="c1">// do something</span>
+<span class="n">player</span><span class="o">.</span><span class="na">exit</span><span class="o">();</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.getPlayer</span>
+
+<span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getPlayer</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
+<span class="n">player</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1">// do something
+</span><span class="n">player</span><span class="p">.</span><span class="n">exit</span><span class="p">()</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span>
+
+<span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">AudioManager</span><span class="o">.</span><span class="n">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="c1">// do something
+</span><span class="n">player</span><span class="o">.</span><span class="n">exit</span><span class="o">()</span>
+</code></pre><h2 id='database'>Database</h2><h2 id='boolarray'>BoolArray</h2><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span><span class="o">;</span>
+
+<span class="n">BoolArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="n">array</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">getLength</span><span class="o">());</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span>
+
+<span class="kd">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">BoolArray</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">array</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="k">true</span>
+<span class="n">println</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">length</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="m">0</span><span class="p">])</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span>
+
+<span class="k">val</span> <span class="n">array</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+<span class="n">array</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+<span class="n">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">getLength</span><span class="o">)</span>
+<span class="n">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+</code></pre>
+<p>FriceEngine provides a bool array implementation optimized with <code>long</code>s and bitwise operation.</p>
+
+<p>It&#39;s very simple (<code>get</code>, <code>set</code> in Java Scala and <code>[]</code> in Kotlin), and it saves memory.</p>
+
+<aside class="warning">
+It raises <code>IndexOutOfBoundException</code> when overflow but doesn't when you use negative index.
+</aside>
+
+<p>For serialization, store the return value of <code>getLongs</code> in Files,
+and read them and pass it to the constructor of <code>BoolArray</code> when you want to use the data.</p>
+<pre class="highlight java tab-java"><code><span class="c1">// write</span>
+<span class="n">write</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">getLongs</span><span class="o">());</span>
+
+<span class="c1">// read</span>
+<span class="kt">long</span><span class="o">[]</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">read</span><span class="o">();</span>
+<span class="n">BoolArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">raw</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="c1">// write
+</span><span class="n">write</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">longs</span><span class="p">)</span>
+
+<span class="c1">// read
+</span><span class="kd">val</span> <span class="py">raw</span><span class="p">:</span> <span class="n">LongArray</span> <span class="p">=</span> <span class="n">read</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">BoolArray</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="c1">// write
+</span><span class="n">write</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">getLongs</span><span class="o">)</span>
+
+<span class="c1">// read
+</span><span class="k">val</span> <span class="n">raw</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Long</span><span class="o">]</span> <span class="k">=</span> <span class="n">read</span><span class="o">()</span>
+<span class="k">val</span> <span class="n">array</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">raw</span><span class="o">)</span>
+</code></pre>
+<aside class="notice">
+Don't modify the long array.
+</aside>
+<h1 id='building-friceengine'>Building FriceEngine</h1>
+<p>You can build the FriceEngine by the following command if JDK is installed:</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/icela/FriceEngine.git
+<span class="gp">$ </span><span class="nb">cd </span>FriceEngine/
+
+<span class="c"># You have JDK only</span>
+<span class="gp">$ </span>chmod a+x ./gradlew
+<span class="gp">$ </span>./gradlew assembleRelease
+
+<span class="c"># You have gradle executable in $PATH, you can build it with</span>
+<span class="gp">$ </span>gradle assembleRelease
+</code></pre>
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="kotlin">kotlin</a>
+                <a href="#" data-language-name="scala">scala</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
