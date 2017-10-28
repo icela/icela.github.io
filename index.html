@@ -237,6 +237,12 @@
                   <li>
                     <a href="#create-a-window" class="toc-h2 toc-link" data-title="Getting started">Create a window</a>
                   </li>
+                  <li>
+                    <a href="#implementing-lifecycle-methods" class="toc-h2 toc-link" data-title="Getting started">Implementing lifecycle methods</a>
+                  </li>
+                  <li>
+                    <a href="#customize-the-window" class="toc-h2 toc-link" data-title="Getting started">Customize the window</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -333,8 +339,140 @@ write a main function.</p>
 
 <p>You can now run the main function to see if it successfully creates a window.</p>
 
-<p>You&#39;re expected to see a 500 x 500 window with white background and a line of text showing the current fps.
-When you try to close the window, you&#39;re expected to see an alert window that confirms you to close it.</p>
+<aside class="success">
+You have successfully imported FriceEngine if a 500 x 500 window with white background and a line of text showing the current fps appears.
+</aside>
+
+<p>When you try to close the window, you&#39;re expected to see an alert window that confirms you to close it.</p>
+<h2 id='implementing-lifecycle-methods'>Implementing lifecycle methods</h2>
+<p>FriceEngine uses lifecycle methods to control it&#39;s behavior.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInit</span><span class="o">()</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">override</span> <span class="k">fun</span> <span class="nf">onInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">override</span> <span class="k">def</span> <span class="n">onInit</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre>
+<p>For example, <code>onInit</code> is a method invoked before the window is created,
+and if you override <code>onInit</code>, you can do some initializations (like, customizing the window&#39;s property).</p>
+
+<aside class="warning">
+The super class of <code>Game</code> is <code>JFrame</code>, but methods of <code>JFrame</code> are not guaranteed to work.
+</aside>
+
+<p>Here&#39;s a table of the lifecycle methods.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: left">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>onInit()</code></td>
+<td style="text-align: left">Invoked before game window created</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onLastInit()</code></td>
+<td style="text-align: left">Invoked before starting refreshing</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onExit()</code></td>
+<td style="text-align: left">Invoked while exiting</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onRefresh()</code></td>
+<td style="text-align: left">Invoked after game window is refreshed, if not paused)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onClick(OnClickEvent)</code></td>
+<td style="text-align: left">Invoked while clicking in game window</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onMouse(OnMouseEvent)</code></td>
+<td style="text-align: left">Invoked when a mouse event arrives(moving, pressing, etc)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onLoseFocus()</code></td>
+<td style="text-align: left">Invoked when game window blurs</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>onFocus()</code></td>
+<td style="text-align: left">Invoked when game window gets focus</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>customDraw(JvmDrawer)</code></td>
+<td style="text-align: left">Invoked after everything is drawn</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Engine does not perform process termination automatically.
+If you override <code>onExit</code>, don't forget to terminate your program.
+</aside>
+
+<p>The <code>JvmDrawer</code> refers to <code>org.frice.game.platform.adapter.JvmDrawer</code>,
+which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
+<h2 id='customize-the-window'>Customize the window</h2><h3 id='hiding-the-fps'>Hiding the fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">showFPS</span> <span class="p">=</span> <span class="k">false</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</code></pre>
+<p>If you don&#39;t want to display the fps you can use this code.</p>
+<h3 id='customize-window-size'>Customize window size</h3><pre class="highlight java tab-java"><code><span class="n">setSize</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<span class="c1">// or</span>
+<span class="n">setSize</span><span class="o">(</span><span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">setSize</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+<span class="c1">// or
+</span><span class="n">size</span> <span class="p">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setSize</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+<span class="c1">// or
+</span><span class="n">setSize</span><span class="o">(</span><span class="k">new</span> <span class="nc">Dimension</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+</code></pre>
+<p>You can customize the window size by invoking <code>setSize</code>.</p>
+
+<p>The first argument refers to the width, and the second refers to the height.</p>
+<h3 id='customizing-window-location'>Customizing window location</h3><pre class="highlight java tab-java"><code><span class="n">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<span class="c1">// or</span>
+<span class="n">setLocation</span><span class="o">(</span><span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">setLocation</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+<span class="c1">// or
+</span><span class="n">location</span> <span class="p">=</span> <span class="n">Point</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+<span class="c1">// or
+</span><span class="n">setLocation</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+</code></pre>
+<p>You can customize the window size by invoking <code>setLocation</code>.</p>
+
+<p>The first argument refers to the distance to the left side of the screen,
+and the second refers to the distance to the top of the screen.</p>
+<h3 id='customizing-the-bounds'>Customizing the bounds</h3><pre class="highlight java tab-java"><code><span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<span class="c1">// or</span>
+<span class="n">setBounds</span><span class="o">(</span><span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">setBounds</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+<span class="c1">// or
+</span><span class="n">bounds</span> <span class="p">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+<span class="c1">// or
+</span><span class="n">setBounds</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rectangle</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+</code></pre>
+<p>The two properties mentioned above can be set at the same time.</p>
+
+<p>The four parameters refer to the width, the height,
+the distance to the left side of the screen, and the distance to the top of the screen respectively.</p>
+<h3 id='color-change-when-lose-focus'>Color change when lose focus</h3><pre class="highlight java tab-java"><code><span class="n">setLoseFocusChangeColor</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">loseFocusChangeColor</span> <span class="p">=</span> <span class="k">false</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setLoseFocusChangeColor</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</code></pre>
+<p>FriceEngine automatically darken the game screen when lose focus.
+If you don&#39;t want to see that, you can use this code.</p>
+
+<p>Of course, if you expect it to happen, replace <code>false</code> with <code>true</code>.</p>
+<h3 id='change-title-text'>Change title text</h3><pre class="highlight java tab-java"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">title</span> <span class="p">=</span> <span class="s">"Your awesome title"</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setTitle</span><span class="o">(</span><span class="s">"Your awesome title"</span><span class="o">)</span>
+</code></pre>
+<p>This changes the window title. It&#39;s a method of <code>JFrame</code> but it&#39;s guaranteed to work.</p>
 <h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
@@ -361,20 +499,23 @@ When you try to close the window, you&#39;re expected to see an alert window tha
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
 
 <span class="n">AudioPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
+<span class="c1">// start playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-<span class="c1">// do something</span>
+<span class="c1">// exit playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">exit</span><span class="o">();</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.getPlayer</span>
 
 <span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getPlayer</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
-<span class="n">player</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
-<span class="c1">// do something
+<span class="c1">// start playing
+</span><span class="n">player</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1">// exit playing
 </span><span class="n">player</span><span class="p">.</span><span class="n">exit</span><span class="p">()</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span>
 
 <span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">AudioManager</span><span class="o">.</span><span class="n">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
-<span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="c1">// do something
+<span class="c1">// start playing
+</span><span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="c1">// exit playing
 </span><span class="n">player</span><span class="o">.</span><span class="n">exit</span><span class="o">()</span>
 </code></pre><h2 id='database'>Database</h2><h2 id='boolarray'>BoolArray</h2><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.misc.BoolArray</span><span class="o">;</span>
 
