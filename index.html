@@ -227,7 +227,22 @@
             <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#jvm" class="toc-h2 toc-link" data-title="Installation">JVM</a>
+                    <a href="#with-intellij-idea" class="toc-h2 toc-link" data-title="Installation">With IntelliJ IDEA</a>
+                  </li>
+                  <li>
+                    <a href="#with-eclipse" class="toc-h2 toc-link" data-title="Installation">With Eclipse</a>
+                  </li>
+                  <li>
+                    <a href="#with-gradle" class="toc-h2 toc-link" data-title="Installation">With Gradle</a>
+                  </li>
+                  <li>
+                    <a href="#with-maven" class="toc-h2 toc-link" data-title="Installation">With Maven</a>
+                  </li>
+                  <li>
+                    <a href="#with-sbt" class="toc-h2 toc-link" data-title="Installation">With SBT</a>
+                  </li>
+                  <li>
+                    <a href="#with-nuget" class="toc-h2 toc-link" data-title="Installation">With NuGet</a>
                   </li>
               </ul>
           </li>
@@ -330,26 +345,75 @@ which means that you can easily build the same game using different languages.</
 <li>Why easy?</li>
 </ul>
 
-<p><a href="https://github.com/icela/FriceDemo/tree/master/demo/Demo7.java">A flappy bird game</a> uses just 65 lines of code only.  </p>
+<p><a href="https://github.com/icela/FriceDemo/tree/master/demo/Demo7.java">A flappy bird game</a> uses only 59 lines of code.</p>
 
 <aside class="notice">
-The flappy bird demo is currently the only demo that uses the up-to-date API. It's written in Java.
+  The flappy bird demo is currently the only demo that uses the up-to-date API.
+  It's written in Java.
 </aside>
 
 <ul>
 <li>Why light?</li>
 </ul>
 
-<p>The release build jar is about 300kb (with a 800kb Kotlin runtime) only.</p>
+<p>For JVM, the release build jar is about 300kb (with a 800kb Kotlin runtime) only.</p>
 
 <ul>
 <li>Why native?</li>
 </ul>
 
-<p>This engine is completely platform-independent: no JNI linkage, no native methods, everything is written in pure Kotlin.</p>
-<h1 id='installation'>Installation</h1><h2 id='jvm'>JVM</h2>
-<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<p>This engine is completely platform-independent.</p>
 
+<p>For JVM, there&#39;s no JNI linkage, no native methods, everything is written in pure Kotlin.</p>
+<h1 id='installation'>Installation</h1><h2 id='with-intellij-idea'>With IntelliJ IDEA</h2>
+<p><a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
+
+<ol>
+<li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
+<li>Create or open a project</li>
+<li><a href="https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project">Import the jar</a>
+into your project</li>
+</ol>
+<h2 id='with-eclipse'>With Eclipse</h2>
+<p><a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
+
+<ol>
+<li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
+<li>Create or open a project</li>
+<li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a>
+into your project</li>
+</ol>
+<h2 id='with-gradle'>With Gradle</h2>
+<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<h3 id='step-0-add-the-jitpack-repository-to-your-build-file'>Step 0. Add the JitPack repository to your build file.</h3><pre class="highlight gradle tab-gradle"><code><span class="c1">// Add it in your root build.gradle at the end of repositories</span>
+<span class="k">allprojects</span> <span class="o">{</span>
+  <span class="k">repositories</span> <span class="o">{</span>
+    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">'https://jitpack.io'</span> <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='step-1-add-the-dependency'>Step 1. Add the dependency.</h3><pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
+  <span class="n">compile</span> <span class="s1">'com.github.icela:FriceEngine:v1.4.0'</span>
+<span class="o">}</span>
+</code></pre><h2 id='with-maven'>With Maven</h2>
+<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<h3 id='step-0-add-the-jitpack-repository-to-your-build-file-2'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight xml tab-xml"><code><span class="c">&lt;!-- Add it in your root pom.xml at the end of repositories --&gt;</span>
+<span class="nt">&lt;repositories&gt;</span>
+  <span class="nt">&lt;repository&gt;</span>
+    <span class="nt">&lt;id&gt;</span>jitpack.io<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;url&gt;</span>https://jitpack.io<span class="nt">&lt;/url&gt;</span>
+  <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/repositories&gt;</span>
+</code></pre><h3 id='step-1-add-the-dependency-2'>Step 1. Add the dependency</h3><pre class="highlight xml tab-xml"><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.github.icela<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>FriceEngine<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>v1.4.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre><h2 id='with-sbt'>With SBT</h2>
+<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<h3 id='step-0-add-the-jitpack-repository-to-your-build-file-3'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight plaintext"><code>// Add it in your root build.sbt at the end of repositories
+resolvers += "jitpack" at "https://jitpack.io"
+</code></pre><h3 id='step-1-add-the-dependency-3'>Step 1. Add the dependency</h3><pre class="highlight plaintext"><code>libraryDependencies += "com.github.icela" % "FriceEngine" % "v1.4.0"
+</code></pre><h2 id='with-nuget'>With NuGet</h2>
 <p>TODO</p>
 <h1 id='getting-started'>Getting started</h1>
 <p>This chapter shows the most basic usage of FriceEngine.</p>
@@ -652,8 +716,11 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 </code></pre>
 <p>And here&#39;s a simple example of using the <code>FileImageResource</code> and <code>WebImageResource</code>.</p>
 <h2 id='creating-objects'>Creating objects</h2>
+<p>As mentioned above, FriceEngine manages games through &quot;object&quot;s.
+Here we&#39;ll see how to create &quot;object&quot;s.</p>
+<h3 id='shape-objects'>Shape objects</h3>
 <p>TODO</p>
-<h2 id='animations'>Animations</h2>
+<h3 id='image-objects'>Image objects</h3><h2 id='animations'>Animations</h2>
 <p>TODO</p>
 <h2 id='collision-detection'>Collision detection</h2>
 <p>TODO</p>
