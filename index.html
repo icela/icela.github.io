@@ -221,6 +221,17 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#jvm" class="toc-h2 toc-link" data-title="Installation">JVM</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
@@ -255,12 +266,41 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='getting-started'>Getting started</h1>
-<p>This chapter shows the most basic usage of FriceEngine.</p>
+        <h1 id='introduction'>Introduction</h1>
+<p><a href="https://github.com/KotlinBy/awesome-kotlin"><img src="https://kotlin.link/awesome-kotlin.svg" alt="Awesome Kotlin Badge" /></a></p>
+
+<p>FriceEngine is an easy, light, native game engine, running mainly on JVM.</p>
+
+<p>It&#39;s built with various languages (C#, Ruby, Racket, etc.), implementing the same API,
+which means that you can easily build the same game using different languages.</p>
+
+<ul>
+<li>Why easy?</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceDemo/tree/master/demo/Demo7.java">A flappy bird game</a> uses just 65 lines of code only.  </p>
 
 <aside class="notice">
-This reference does not show how to import FriceEngine as a library in your language. It's just API doc.
+The flappy bird demo is currently the only demo that uses the up-to-date API. It's written in Java.
 </aside>
+
+<ul>
+<li>Why light?</li>
+</ul>
+
+<p>The release build jar is about 300kb (with a 800kb Kotlin runtime) only.</p>
+
+<ul>
+<li>Why native?</li>
+</ul>
+
+<p>This engine is completely platform-independent: no JNI linkage, no native methods, everything is written in pure Kotlin.</p>
+<h1 id='installation'>Installation</h1><h2 id='jvm'>JVM</h2>
+<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+
+<p>TODO</p>
+<h1 id='getting-started'>Getting started</h1>
+<p>This chapter shows the most basic usage of FriceEngine.</p>
 <h2 id='create-a-window'>Create a window</h2>
 <p>First we need to create a game window.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.Game</span><span class="o">;</span>
@@ -272,10 +312,10 @@ This reference does not show how to import FriceEngine as a library in your lang
 <span class="o">}</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.game.Game</span>
 
-<span class="kd">object</span> <span class="nc">MyGame</span> <span class="p">:</span> <span class="n">Game</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">@JvmStatic</span>
-  <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">MyGame</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">MyGame</span> <span class="p">:</span> <span class="n">Game</span><span class="p">()</span> <span class="p">{</span>
 <span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">MyGame</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game.Game</span>
 
 <span class="k">object</span> <span class="nc">MyGame</span> <span class="k">extends</span> <span class="nc">Game</span> <span class="o">{</span>
@@ -286,12 +326,15 @@ This reference does not show how to import FriceEngine as a library in your lang
 This class has an optional constructor parameter, which will be introduced later.
 We invoke the empty one first.</p>
 
-<p>For convenience, the Kotlin and Scala version uses <code>object</code> instead of <code>class</code> because we want an easier way to
+<p>For convenience, the Scala version uses <code>object</code> instead of <code>class</code> because we want an easier way to
 write a main function.</p>
 
 <p>We invoke the <code>Game.launch</code> method in the main function and pass the <code>class</code> of your game class to it.</p>
 
 <p>You can now run the main function to see if it successfully creates a window.</p>
+
+<p>You&#39;re expected to see a 500 x 500 window with white background and a line of text showing the current fps.
+When you try to close the window, you&#39;re expected to see an alert window that confirms you to close it.</p>
 <h1 id='misc'>Misc</h1><h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.game.utils.audio.AudioManager</span><span class="o">;</span>
