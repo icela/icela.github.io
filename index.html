@@ -383,9 +383,7 @@ into your project</li>
 <li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a>
 into your project</li>
 </ol>
-<h2 id='with-gradle'>With Gradle</h2>
-<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h3 id='step-0-add-the-jitpack-repository-to-your-build-file'>Step 0. Add the JitPack repository to your build file.</h3><pre class="highlight gradle tab-gradle"><code><span class="c1">// Add it in your root build.gradle at the end of repositories</span>
+<h2 id='with-gradle'>With Gradle</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file'>Step 0. Add the JitPack repository to your build file.</h3><pre class="highlight gradle tab-gradle"><code><span class="c1">// Add it in your root build.gradle at the end of repositories</span>
 <span class="k">allprojects</span> <span class="o">{</span>
   <span class="k">repositories</span> <span class="o">{</span>
     <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">'https://jitpack.io'</span> <span class="o">}</span>
@@ -394,9 +392,9 @@ into your project</li>
 </code></pre><h3 id='step-1-add-the-dependency'>Step 1. Add the dependency.</h3><pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
   <span class="n">compile</span> <span class="s1">'com.github.icela:FriceEngine:v1.4.0'</span>
 <span class="o">}</span>
-</code></pre><h2 id='with-maven'>With Maven</h2>
+</code></pre>
 <p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h3 id='step-0-add-the-jitpack-repository-to-your-build-file-2'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight xml tab-xml"><code><span class="c">&lt;!-- Add it in your root pom.xml at the end of repositories --&gt;</span>
+<h2 id='with-maven'>With Maven</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file-2'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight xml tab-xml"><code><span class="c">&lt;!-- Add it in your root pom.xml at the end of repositories --&gt;</span>
 <span class="nt">&lt;repositories&gt;</span>
   <span class="nt">&lt;repository&gt;</span>
     <span class="nt">&lt;id&gt;</span>jitpack.io<span class="nt">&lt;/id&gt;</span>
@@ -408,12 +406,14 @@ into your project</li>
   <span class="nt">&lt;artifactId&gt;</span>FriceEngine<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>v1.4.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
-</code></pre><h2 id='with-sbt'>With SBT</h2>
+</code></pre>
 <p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h3 id='step-0-add-the-jitpack-repository-to-your-build-file-3'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight plaintext"><code>// Add it in your root build.sbt at the end of repositories
+<h2 id='with-sbt'>With SBT</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file-3'>Step 0. Add the JitPack repository to your build file</h3><pre class="highlight plaintext"><code>// Add it in your root build.sbt at the end of repositories
 resolvers += "jitpack" at "https://jitpack.io"
 </code></pre><h3 id='step-1-add-the-dependency-3'>Step 1. Add the dependency</h3><pre class="highlight plaintext"><code>libraryDependencies += "com.github.icela" % "FriceEngine" % "v1.4.0"
-</code></pre><h2 id='with-nuget'>With NuGet</h2>
+</code></pre>
+<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<h2 id='with-nuget'>With NuGet</h2>
 <p>TODO</p>
 <h1 id='getting-started'>Getting started</h1>
 <p>This chapter shows the most basic usage of FriceEngine.</p>
@@ -450,7 +450,8 @@ write a main function.</p>
 <p>You can now run the main function to see if it successfully creates a window.</p>
 
 <aside class="success">
-You have successfully imported FriceEngine if a 500 x 500 window with white background and a line of text showing the current fps appears.
+  You have successfully imported FriceEngine if a 500 x 500 window with white background and
+  a line of text showing the current fps appears.
 </aside>
 
 <p>When you try to close the window, you&#39;re expected to see an alert window that confirms you to close it.</p>
@@ -512,7 +513,7 @@ The super class of <code>Game</code> is <code>JFrame</code>, but methods of <cod
 <td style="text-align: left">Invoked when game window gets focus</td>
 </tr>
 <tr>
-<td style="text-align: left"><code>customDraw(JvmDrawer)</code></td>
+<td style="text-align: left"><code>customDraw(FriceDrawer)</code></td>
 <td style="text-align: left">Invoked after everything is drawn</td>
 </tr>
 </tbody></table>
@@ -522,7 +523,7 @@ Engine does not perform process termination automatically.
 If you override <code>onExit</code>, don't forget to terminate your program.
 </aside>
 
-<p>The <code>JvmDrawer</code> refers to <code>org.frice.game.platform.adapter.JvmDrawer</code>,
+<p>The <code>FriceDrawer</code> refers to <code>org.frice.game.platform.FriceDrawer</code>,
 which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
 <h2 id='customizing-the-window'>Customizing the window</h2>
 <p>You can customize the game window in the <code>onInit</code> method.</p>
