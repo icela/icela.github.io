@@ -265,9 +265,6 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <a href="#with-nuget" class="toc-h2 toc-link" data-title="Installation">With NuGet</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -307,6 +304,14 @@
                   </li>
                   <li>
                     <a href="#cancelling-the-confirm-window" class="toc-h2 toc-link" data-title="Getting started">Cancelling the confirm window</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#always-on-top" class="toc-h3 toc-link" data-title="Getting started">Always on top</a>
+                      </li>
+                      <li>
+                        <a href="#full-screen" class="toc-h3 toc-link" data-title="Getting started">Full screen</a>
+                      </li>
+                    </ul>
                   </li>
               </ul>
           </li>
@@ -337,6 +342,20 @@
                   </li>
                   <li>
                     <a href="#animations" class="toc-h2 toc-link" data-title="Creating Games">Animations</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#simple-move" class="toc-h3 toc-link" data-title="Creating Games">Simple move</a>
+                      </li>
+                      <li>
+                        <a href="#accelerate-move" class="toc-h3 toc-link" data-title="Creating Games">Accelerate Move</a>
+                      </li>
+                      <li>
+                        <a href="#rotating" class="toc-h3 toc-link" data-title="Creating Games">Rotating</a>
+                      </li>
+                      <li>
+                        <a href="#scaling" class="toc-h3 toc-link" data-title="Creating Games">Scaling</a>
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     <a href="#collision-detection" class="toc-h2 toc-link" data-title="Creating Games">Collision detection</a>
@@ -455,7 +474,7 @@ into your project</li>
 </code></pre><h3 id='step-1-add-the-dependency'>Step 1. Add the dependency.</h3>
 <p>Remember to replace the version code with the newest one displayed in the badge.</p>
 <pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
-  <span class="n">compile</span> <span class="s1">'com.github.icela:FriceEngine:v1.6.3'</span>
+  <span class="n">compile</span> <span class="s1">'com.github.icela:FriceEngine:v1.7.1'</span>
 <span class="o">}</span>
 </code></pre>
 <p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
@@ -470,7 +489,7 @@ into your project</li>
 <pre class="highlight xml tab-xml"><code><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.github.icela<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>FriceEngine<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>v1.6.3<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>v1.7.1<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre>
 <p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
@@ -479,11 +498,13 @@ into your project</li>
 <pre class="highlight plaintext"><code>resolvers += "jitpack" at "https://jitpack.io"
 </code></pre><h3 id='step-1-add-the-dependency-3'>Step 1. Add the dependency</h3>
 <p>Remember to replace the version code with the newest one displayed in the badge.</p>
-<pre class="highlight plaintext"><code>libraryDependencies += "com.github.icela" % "FriceEngine" % "v1.6.3"
+<pre class="highlight plaintext"><code>libraryDependencies += "com.github.icela" % "FriceEngine" % "v1.7.1"
 </code></pre>
 <p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h2 id='with-nuget'>With NuGet</h2>
-<p>TODO</p>
+
+<!-- ## With NuGet -->
+
+<!-- TODO -->
 <h1 id='getting-started'>Getting started</h1>
 <p>This chapter shows the most basic usage of FriceEngine.</p>
 <h2 id='creating-a-window'>Creating a window</h2>
@@ -590,7 +611,7 @@ We invoke the empty one first.</p>
 </tr>
 <tr>
 <td style="text-align: left">Always on top</td>
-<td style="text-align: center">×</td>
+<td style="text-align: center">√</td>
 <td style="text-align: center">√</td>
 </tr>
 <tr>
@@ -612,6 +633,11 @@ We invoke the empty one first.</p>
 <td style="text-align: left">Rotate animation</td>
 <td style="text-align: center">√</td>
 <td style="text-align: center">×</td>
+</tr>
+<tr>
+<td style="text-align: left">Key listener</td>
+<td style="text-align: center">√</td>
+<td style="text-align: center">√</td>
 </tr>
 </tbody></table>
 
@@ -769,6 +795,20 @@ If you don&#39;t want to see that, you can use this code.</p>
 
 <p>If you don&#39;t call <code>System.exit(0)</code>, you cannot close the window through clicking the exit button.
 If you invoke <code>super.onExit()</code>, the confirm window will still appear, so you might not invoke it.</p>
+<h3 id='always-on-top'>Always on top</h3>
+<p>You can make your game window always on top by using</p>
+<pre class="highlight java tab-java"><code><span class="n">setAlwaysTop</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">isAlwaysTop</span> <span class="p">=</span> <span class="k">true</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">setAlwaysTop</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</code></pre>
+<p>You can change the parameter to <code>false</code>, to disable always on top.</p>
+<h3 id='full-screen'>Full screen</h3>
+<p>You can make your game window full screen by using</p>
+<pre class="highlight java tab-java"><code><span class="n">setFullScreen</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">isFullScreen</span> <span class="p">=</span> <span class="k">true</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">setFullScreen</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</code></pre>
+<p>You can change the parameter to <code>false</code>, to disable full screen.</p>
 
 <p><br/>
 <br/>
@@ -856,6 +896,10 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 <td style="text-align: left"><code>empty()</code></td>
 <td style="text-align: left">Creates an empty image</td>
 </tr>
+<tr>
+<td style="text-align: left"><code>emptyFx()</code></td>
+<td style="text-align: left">Creates an empty image for JavaFX</td>
+</tr>
 </tbody></table>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.image.FileImageResource</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.frice.resource.image.WebImageResource</span><span class="o">;</span>
@@ -906,8 +950,28 @@ It represents objects which are simply a geometric shape, like rectangles or cir
 
 <p>This is very similar to <code>ShapeObject</code>.</p>
 <h2 id='animations'>Animations</h2>
-<p>We can add animations to game objects.</p>
+<p>We can add animations to game objects by invoking <code>addAnim</code>.</p>
+<h3 id='simple-move'>Simple move</h3>
+<p>For instance, a simple uniform motion can be represented by a <code>SimpleMove</code>,
+the two parameters are the speed on <code>x</code> axis and <code>y</code> axis respectively.</p>
 
+<p>Change the parameter and run to better understand those parameters.</p>
+<pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
+<span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span> <span class="c1">// alternative
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+</code></pre>
+<p>If you prefer using <code>Double</code>s rather than <code>Int</code>s, use <code>AccurateMove</code> instead of <code>SimpleMove</code>.</p>
+<h3 id='accelerate-move'>Accelerate Move</h3>
+<p>A simple accelerate motion can be represented by a <code>AccelerateMove</code>,
+the two parameters are the acceleration on <code>x</code> axis and <code>y</code> axis respectively.</p>
+<pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span>
+<span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span> <span class="c1">// alternative
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">))</span>
+</code></pre><h3 id='rotating'>Rotating</h3>
+<p>TODO</p>
+<h3 id='scaling'>Scaling</h3>
 <p>TODO</p>
 <h2 id='collision-detection'>Collision detection</h2>
 <p>TODO</p>
