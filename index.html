@@ -408,16 +408,24 @@
                   <li>
                     <a href="#database" class="toc-h2 toc-link" data-title="Misc">Database</a>
                   </li>
-                  <li>
-                    <a href="#boolarray" class="toc-h2 toc-link" data-title="Misc">BoolArray</a>
-                  </li>
               </ul>
           </li>
           <li>
             <a href="#building-friceengine" class="toc-h1 toc-link" data-title="Building FriceEngine">Building FriceEngine</a>
           </li>
           <li>
-            <a href="#github-release" class="toc-h1 toc-link" data-title="GitHub release">GitHub release</a>
+            <a href="#github-stuffs" class="toc-h1 toc-link" data-title="GitHub stuffs">GitHub stuffs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#release" class="toc-h2 toc-link" data-title="GitHub stuffs">Release</a>
+                  </li>
+                  <li>
+                    <a href="#issues" class="toc-h2 toc-link" data-title="GitHub stuffs">Issues</a>
+                  </li>
+                  <li>
+                    <a href="#milestones" class="toc-h2 toc-link" data-title="GitHub stuffs">Milestones</a>
+                  </li>
+              </ul>
           </li>
       </div>
         <ul class="toc-footer">
@@ -954,13 +962,13 @@ It represents objects which are simply a geometric shape, like rectangles or cir
 <h3 id='simple-move'>Simple move</h3>
 <p>For instance, a simple uniform motion can be represented by a <code>SimpleMove</code>,
 the two parameters are the speed on <code>x</code> axis and <code>y</code> axis respectively.</p>
-
-<p>Change the parameter and run to better understand those parameters.</p>
 <pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
 <span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span> <span class="c1">// alternative
 </span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
 </code></pre>
+<p>Change the parameter and run to better understand those parameters.</p>
+
 <p>If you prefer using <code>Double</code>s rather than <code>Int</code>s, use <code>AccurateMove</code> instead of <code>SimpleMove</code>.</p>
 <h3 id='accelerate-move'>Accelerate Move</h3>
 <p>A simple accelerate motion can be represented by a <code>AccelerateMove</code>,
@@ -1043,57 +1051,112 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 <p>FriceEngine provides a key-value based database, and there&#39;re two implementations.</p>
 
 <p>TODO</p>
-<h2 id='boolarray'>BoolArray</h2><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.BoolArray</span><span class="o">;</span>
 
-<span class="n">BoolArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-<span class="n">array</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">getLength</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.BoolArray</span>
+<!-- ## BoolArray -->
 
-<span class="kd">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">BoolArray</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-<span class="n">array</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="k">true</span>
-<span class="n">println</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">length</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="m">0</span><span class="p">])</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.BoolArray</span>
+<!-- ```java -->
 
-<span class="k">val</span> <span class="n">array</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-<span class="n">array</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
-<span class="n">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">getLength</span><span class="o">)</span>
-<span class="n">println</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
-</code></pre>
-<p>FriceEngine provides a bool array implementation optimized with <code>long</code>s and bitwise operation.</p>
+<!-- import org.frice.utils.BoolArray; -->
 
-<p>It&#39;s very simple (<code>get</code>, <code>set</code> in Java Scala and <code>[]</code> in Kotlin), and it saves memory.</p>
+<!-- BoolArray array = new BoolArray(10); -->
 
-<aside class="warning">
-It raises <code>IndexOutOfBoundException</code> when overflow but doesn't when you use negative index.
-</aside>
+<!-- array.set(0, true); -->
 
-<p>For serialization, store the return value of <code>getLongs</code> in Files,
-and read them and pass it to the constructor of <code>BoolArray</code> when you want to use the data.</p>
-<pre class="highlight java tab-java"><code><span class="c1">// write</span>
-<span class="n">write</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="na">getLongs</span><span class="o">());</span>
+<!-- System.out.println(array.getLength()); -->
 
-<span class="c1">// read</span>
-<span class="kt">long</span><span class="o">[]</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">read</span><span class="o">();</span>
-<span class="n">BoolArray</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">raw</span><span class="o">);</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="c1">// write
-</span><span class="n">write</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">longs</span><span class="p">)</span>
+<!-- System.out.println(array.get(0)); -->
 
-<span class="c1">// read
-</span><span class="kd">val</span> <span class="py">raw</span><span class="p">:</span> <span class="n">LongArray</span> <span class="p">=</span> <span class="n">read</span><span class="p">()</span>
-<span class="kd">val</span> <span class="py">array</span> <span class="p">=</span> <span class="n">BoolArray</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="c1">// write
-</span><span class="n">write</span><span class="o">(</span><span class="n">array</span><span class="o">.</span><span class="n">getLongs</span><span class="o">)</span>
+<!-- ``` -->
 
-<span class="c1">// read
-</span><span class="k">val</span> <span class="n">raw</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Long</span><span class="o">]</span> <span class="k">=</span> <span class="n">read</span><span class="o">()</span>
-<span class="k">val</span> <span class="n">array</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">BoolArray</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">raw</span><span class="o">)</span>
-</code></pre>
-<aside class="notice">
-Don't modify the long array.
-</aside>
+<!-- ```kotlin -->
+
+<!-- import org.frice.utils.BoolArray -->
+
+<!-- val array = BoolArray(10) -->
+
+<!-- array[0] = true -->
+
+<!-- println(array.length) -->
+
+<!-- println(array[0]) -->
+
+<!-- ``` -->
+
+<!-- ```scala -->
+
+<!-- import org.frice.utils.BoolArray -->
+
+<!-- val array = new BoolArray(10) -->
+
+<!-- array.set(0, true) -->
+
+<!-- println(array.getLength) -->
+
+<!-- println(array.get(0)) -->
+
+<!-- ``` -->
+
+<!-- FriceEngine provides a bool array implementation optimized with `long`s and bitwise operation. -->
+
+<!-- It's very simple (`get`, `set` in Java Scala and `[]` in Kotlin), and it saves memory. -->
+
+<!-- <aside class="warning"> -->
+
+<!-- It raises <code>IndexOutOfBoundException</code> when overflow but doesn't when you use negative index. -->
+
+<!-- </aside> -->
+
+<!-- For serialization, store the return value of `getLongs` in Files, -->
+
+<!-- and read them and pass it to the constructor of `BoolArray` when you want to use the data. -->
+
+<!-- ```java -->
+
+<!-- // write -->
+
+<!-- write(array.getLongs()); -->
+
+<!-- // read -->
+
+<!-- long[] raw = read(); -->
+
+<!-- BoolArray array = new BoolArray(10, raw); -->
+
+<!-- ``` -->
+
+<!-- ```kotlin -->
+
+<!-- // write -->
+
+<!-- write(array.longs) -->
+
+<!-- // read -->
+
+<!-- val raw: LongArray = read() -->
+
+<!-- val array = BoolArray(10, raw) -->
+
+<!-- ``` -->
+
+<!-- ```scala -->
+
+<!-- // write -->
+
+<!-- write(array.getLongs) -->
+
+<!-- // read -->
+
+<!-- val raw: Array[Long] = read() -->
+
+<!-- val array = new BoolArray(10, raw) -->
+
+<!-- ``` -->
+
+<!-- <aside class="notice"> -->
+
+<!-- Don't modify the long array. -->
+
+<!-- </aside> -->
 <h1 id='building-friceengine'>Building FriceEngine</h1>
 <p>You can build the FriceEngine by the following command if JDK is installed:</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/icela/FriceEngine.git
@@ -1105,8 +1168,20 @@ Don't modify the long array.
 
 <span class="c"># You have gradle executable in $PATH, you can build it with</span>
 <span class="gp">$ </span>gradle assembleRelease
-</code></pre><h1 id='github-release'>GitHub release</h1>
-<p>See https://github.com/icela/FriceEngine/releases</p>
+</code></pre><h1 id='github-stuffs'>GitHub stuffs</h1><h2 id='release'>Release</h2>
+<p>See <a href="https://github.com/icela/FriceEngine/releases">GitHub releases</a>.</p>
+
+<p>FriceEngine publishes its newest version here.</p>
+<h2 id='issues'>Issues</h2>
+<p>See <a href="https://github.com/icela/FriceEngine/issues">GitHub issues</a>.</p>
+
+<p>When there&#39;s feature request/bug report/cleanup request,
+an issue will be opened here, and a milestone will be distributed to it.</p>
+<h2 id='milestones'>Milestones</h2>
+<p>See <a href="https://github.com/icela/FriceEngine/milestones">GitHub milestones</a>.</p>
+
+<p>Since 1.7.0, FriceEngine will have a milestone corresponds to every version.
+Issues will be distributed a version to be solved.</p>
 
       </div>
       <div class="dark-box">
