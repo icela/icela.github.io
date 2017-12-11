@@ -253,7 +253,7 @@
                     <a href="#customizing-the-window" class="toc-h2 toc-link" data-title="Getting started">Customizing the window</a>
                     <ul class="toc-list-h3">
                       <li>
-                        <a href="#hiding-the-fps" class="toc-h3 toc-link" data-title="Getting started">Hiding the fps</a>
+                        <a href="#hiding-fps" class="toc-h3 toc-link" data-title="Getting started">Hiding fps</a>
                       </li>
                       <li>
                         <a href="#customizing-window-size" class="toc-h3 toc-link" data-title="Getting started">Customizing window size</a>
@@ -329,6 +329,11 @@
                   </li>
                   <li>
                     <a href="#collision-detection" class="toc-h2 toc-link" data-title="Creating Games">Collision detection</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#customizing-collision-box" class="toc-h3 toc-link" data-title="Creating Games">Customizing collision box</a>
+                      </li>
+                    </ul>
                   </li>
               </ul>
           </li>
@@ -690,7 +695,7 @@ If you override <code>onExit</code>, don't forget to terminate your program.
 which has some similar functions of <code>java.awt.Graphics2D</code>.</p>
 <h2 id='customizing-the-window'>Customizing the window</h2>
 <p>You can customize the game window in the <code>onInit</code> method.</p>
-<h3 id='hiding-the-fps'>Hiding the fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<h3 id='hiding-fps'>Hiding fps</h3><pre class="highlight java tab-java"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">showFPS</span> <span class="p">=</span> <span class="k">false</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">setShowFPS</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </code></pre>
@@ -778,23 +783,18 @@ If you invoke <code>super.onExit()</code>, the confirm window will still appear,
 <p>You can make your game window always on top by using</p>
 <pre class="highlight java tab-java"><code><span class="n">setAlwaysTop</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">isAlwaysTop</span> <span class="p">=</span> <span class="k">true</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">setAlwaysTop</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setAlwaysTop</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
 </code></pre>
 <p>You can change the parameter to <code>false</code>, to disable always on top.</p>
 <h3 id='full-screen'>Full screen</h3>
 <p>You can make your game window full screen by using</p>
 <pre class="highlight java tab-java"><code><span class="n">setFullScreen</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">isFullScreen</span> <span class="p">=</span> <span class="k">true</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">setFullScreen</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">setFullScreen</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
 </code></pre>
 <p>You can change the parameter to <code>false</code>, to disable full screen.</p>
 
-<p><br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/></p>
+<p><br/><br/><br/><br/><br/><br/></p>
 
 <p>Now you have some basic knowledge about FriceEngine.
 It&#39;s time to create real games with it!</p>
@@ -953,6 +953,15 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 <h3 id='scaling'>Scaling</h3>
 <p>TODO</p>
 <h2 id='collision-detection'>Collision detection</h2>
+<p>Use the <code>collides</code> method to check if two game objects are collided:</p>
+<pre class="highlight java tab-java"><code><span class="k">if</span> <span class="o">(</span><span class="n">bullet</span><span class="o">.</span><span class="na">collides</span><span class="o">(</span><span class="n">player</span><span class="o">))</span> <span class="n">player</span><span class="o">.</span><span class="na">setDied</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">if</span> <span class="p">(</span><span class="n">bullet</span><span class="p">.</span><span class="n">collides</span><span class="p">(</span><span class="n">player</span><span class="p">))</span> <span class="n">player</span><span class="p">.</span><span class="n">died</span> <span class="p">=</span> <span class="k">true</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">if</span> <span class="o">(</span><span class="n">bullet</span><span class="o">.</span><span class="n">collides</span><span class="o">(</span><span class="n">player</span><span class="o">))</span> <span class="n">player</span><span class="o">.</span><span class="n">setDied</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</code></pre>
+<p><br/></p>
+
+<p>You may do collision check in the <code>onRefresh</code> method.</p>
+<h3 id='customizing-collision-box'>Customizing collision box</h3>
 <p>TODO</p>
 <h1 id='higher-level-usage'>Higher Level Usage</h1><h2 id='creating-complex-resources'>Creating complex resources</h2><h3 id='particle-resources'>Particle resources</h3>
 <p>TODO</p>
