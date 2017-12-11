@@ -233,37 +233,7 @@
                     <a href="#with-eclipse" class="toc-h2 toc-link" data-title="Installation">With Eclipse</a>
                   </li>
                   <li>
-                    <a href="#with-gradle" class="toc-h2 toc-link" data-title="Installation">With Gradle</a>
-                    <ul class="toc-list-h3">
-                      <li>
-                        <a href="#step-0-add-the-jitpack-repository-to-your-build-file" class="toc-h3 toc-link" data-title="Installation">Step 0. Add the JitPack repository to your build file.</a>
-                      </li>
-                      <li>
-                        <a href="#step-1-add-the-dependency" class="toc-h3 toc-link" data-title="Installation">Step 1. Add the dependency.</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#with-maven" class="toc-h2 toc-link" data-title="Installation">With Maven</a>
-                    <ul class="toc-list-h3">
-                      <li>
-                        <a href="#step-0-add-the-jitpack-repository-to-your-build-file-2" class="toc-h3 toc-link" data-title="Installation">Step 0. Add the JitPack repository to your build file</a>
-                      </li>
-                      <li>
-                        <a href="#step-1-add-the-dependency-2" class="toc-h3 toc-link" data-title="Installation">Step 1. Add the dependency</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#with-sbt" class="toc-h2 toc-link" data-title="Installation">With SBT</a>
-                    <ul class="toc-list-h3">
-                      <li>
-                        <a href="#step-0-add-the-jitpack-repository-to-your-build-file-3" class="toc-h3 toc-link" data-title="Installation">Step 0. Add the JitPack repository to your build file</a>
-                      </li>
-                      <li>
-                        <a href="#step-1-add-the-dependency-3" class="toc-h3 toc-link" data-title="Installation">Step 1. Add the dependency</a>
-                      </li>
-                    </ul>
+                    <a href="#with-gradle-maven-sbt" class="toc-h2 toc-link" data-title="Installation">With Gradle/Maven/SBT</a>
                   </li>
               </ul>
           </li>
@@ -401,12 +371,28 @@
                   </li>
                   <li>
                     <a href="#alert-dialogs" class="toc-h2 toc-link" data-title="Misc">Alert dialogs</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#showing-information" class="toc-h3 toc-link" data-title="Misc">Showing information</a>
+                      </li>
+                      <li>
+                        <a href="#getting-user-input" class="toc-h3 toc-link" data-title="Misc">Getting user input</a>
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     <a href="#playing-music" class="toc-h2 toc-link" data-title="Misc">Playing music</a>
                   </li>
                   <li>
                     <a href="#database" class="toc-h2 toc-link" data-title="Misc">Database</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#preference" class="toc-h3 toc-link" data-title="Misc">Preference</a>
+                      </li>
+                      <li>
+                        <a href="#xmlpreference" class="toc-h3 toc-link" data-title="Misc">XMLPreference</a>
+                      </li>
+                    </ul>
                   </li>
               </ul>
           </li>
@@ -421,6 +407,9 @@
                   </li>
                   <li>
                     <a href="#issues" class="toc-h2 toc-link" data-title="GitHub stuffs">Issues</a>
+                  </li>
+                  <li>
+                    <a href="#sub-projects" class="toc-h2 toc-link" data-title="GitHub stuffs">Sub projects</a>
                   </li>
                   <li>
                     <a href="#milestones" class="toc-h2 toc-link" data-title="GitHub stuffs">Milestones</a>
@@ -438,15 +427,14 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><a href="https://github.com/KotlinBy/awesome-kotlin"><img src="https://kotlin.link/awesome-kotlin.svg" alt="Awesome Kotlin Badge" /></a></p>
-
 <p>FriceEngine is an easy, light, native game engine, running mainly on JVM.</p>
 
-<p>It&#39;s built with various languages (C#, Ruby, Racket, etc.), implementing the same API,
-which means that you can easily build the same game using different languages.</p>
+<ul>
+<li>Why easy?
 
 <ul>
-<li>Why easy? <a href="https://github.com/icela/FriceDemo/tree/master/demo/Demo7.java">A flappy bird game</a> uses only 56 lines of code.</li>
+<li><a href="https://github.com/icela/FriceDemo/tree/master/1.7.6/Demo7.java">A flappy bird game</a> uses only 56 lines of code.</li>
+</ul></li>
 </ul>
 
 <aside class="notice">
@@ -455,11 +443,22 @@ which means that you can easily build the same game using different languages.</
 </aside>
 
 <ul>
-<li><p>Why light? For JVM, the release build jar is about 300kb (with a 800kb Kotlin runtime) only.</p></li>
-<li><p>Why native? This engine is completely platform-independent.</p></li>
+<li>Why light?
+
+<ul>
+<li>The release build jar is about 1.6mb (with a 1mb Kotlin runtime) only.</li>
+<li>All you have to do is import the jar into your project.
+<br/></li>
+</ul></li>
+<li>Why native?
+
+<ul>
+<li>This engine is completely platform-independent.</li>
+</ul></li>
 </ul>
 <h1 id='installation'>Installation</h1><h2 id='with-intellij-idea'>With IntelliJ IDEA</h2>
-<p><a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
+<p>AppVeyor is used to automating the build of FriceEngine.<br>
+Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
 
 <ol>
 <li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
@@ -468,7 +467,8 @@ which means that you can easily build the same game using different languages.</
 into your project</li>
 </ol>
 <h2 id='with-eclipse'>With Eclipse</h2>
-<p><a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
+<p>AppVeyor is used to automating the build of FriceEngine.<br>
+Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a></p>
 
 <ol>
 <li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
@@ -476,39 +476,10 @@ into your project</li>
 <li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a>
 into your project</li>
 </ol>
-<h2 id='with-gradle'>With Gradle</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file'>Step 0. Add the JitPack repository to your build file.</h3>
-<p>Add it in your root <code>build.gradle</code> at the end of repositories.</p>
-<pre class="highlight gradle tab-gradle"><code><span class="k">allprojects</span> <span class="o">{</span> <span class="k">repositories</span> <span class="o">{</span> <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">'https://jitpack.io'</span> <span class="o">}</span> <span class="o">}</span> <span class="o">}</span>
-</code></pre><h3 id='step-1-add-the-dependency'>Step 1. Add the dependency.</h3>
-<p>Remember to replace the version code with the newest one displayed in the badge.</p>
-<pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
-  <span class="n">compile</span> <span class="s1">'com.github.icela:FriceEngine:v1.7.1'</span>
-<span class="o">}</span>
-</code></pre>
-<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h2 id='with-maven'>With Maven</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file-2'>Step 0. Add the JitPack repository to your build file</h3>
-<p>Add it in your root pom.xml at the end of repositories.</p>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;repositories&gt;&lt;repository&gt;</span>
-  <span class="nt">&lt;id&gt;</span>jitpack.io<span class="nt">&lt;/id&gt;</span>
-  <span class="nt">&lt;url&gt;</span>https://jitpack.io<span class="nt">&lt;/url&gt;</span>
-<span class="nt">&lt;/repository&gt;&lt;/repositories&gt;</span>
-</code></pre><h3 id='step-1-add-the-dependency-2'>Step 1. Add the dependency</h3>
-<p>Remember to replace the version code with the newest one displayed in the badge.</p>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>com.github.icela<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>FriceEngine<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>v1.7.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre>
-<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
-<h2 id='with-sbt'>With SBT</h2><h3 id='step-0-add-the-jitpack-repository-to-your-build-file-3'>Step 0. Add the JitPack repository to your build file</h3>
-<p>Add it in your root build.sbt at the end of repositories</p>
-<pre class="highlight plaintext"><code>resolvers += "jitpack" at "https://jitpack.io"
-</code></pre><h3 id='step-1-add-the-dependency-3'>Step 1. Add the dependency</h3>
-<p>Remember to replace the version code with the newest one displayed in the badge.</p>
-<pre class="highlight plaintext"><code>libraryDependencies += "com.github.icela" % "FriceEngine" % "v1.7.1"
-</code></pre>
-<p><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<h2 id='with-gradle-maven-sbt'>With Gradle/Maven/SBT</h2>
+<p>Newest version: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+
+<p>View <a href="https://jitpack.io/#icela/FriceEngine">instructions on the JitPack website</a></p>
 
 <!-- ## With NuGet -->
 
@@ -1002,8 +973,30 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 <h2 id='file-utils'>File utils</h2>
 <p>TODO</p>
 <h2 id='alert-dialogs'>Alert dialogs</h2>
-<p>TODO</p>
-<h2 id='playing-music'>Playing music</h2>
+<p>FriceEngine provides handy APIs for creating dialogs.</p>
+
+<p>All the dialog API has got an optional title argument, so plaease don&#39;t think there isn&#39;t one for it&#39;s not shown in the example code.</p>
+<h3 id='showing-information'>Showing information</h3><pre class="highlight java tab-java"><code><span class="n">dialogShow</span><span class="o">(</span><span class="s">"information to show"</span><span class="o">);</span>
+<span class="n">dialogShow</span><span class="o">(</span><span class="s">"information to show"</span><span class="o">,</span> <span class="s">"title"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">dialogShow</span><span class="p">(</span><span class="s">"information to show"</span><span class="p">)</span>
+<span class="n">dialogShow</span><span class="p">(</span><span class="s">"information to show"</span><span class="p">,</span> <span class="s">"title"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="n">dialogShow</span><span class="o">(</span><span class="s">"information to show"</span><span class="o">)</span>
+<span class="n">dialogShow</span><span class="o">(</span><span class="s">"information to show"</span><span class="o">,</span> <span class="s">"title"</span><span class="o">)</span>
+</code></pre>
+<p>Just look at the code and you know how to use them.</p>
+<h3 id='getting-user-input'>Getting user input</h3>
+<p>You can also get user input, by asking them a yes-or-no question:</p>
+<pre class="highlight java tab-java"><code><span class="kt">boolean</span> <span class="n">userOpinion</span> <span class="o">=</span> <span class="n">dialogConfirmYesNo</span><span class="o">(</span><span class="s">"Do you like what you see?"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">userOpinion</span> <span class="p">=</span> <span class="n">dialogConfirmYesNo</span><span class="p">(</span><span class="s">"Do you like what you see?"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">userOpinion</span> <span class="k">=</span> <span class="n">dialogConfirmYesNo</span><span class="o">(</span><span class="s">"Do you like what you see?"</span><span class="o">)</span>
+</code></pre>
+<p><br/><br/></p>
+
+<p>Or a question that requires a more specific answer:</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">dialogInput</span><span class="o">(</span><span class="s">"What's your name?"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">username</span> <span class="p">=</span> <span class="n">dialogInput</span><span class="p">(</span><span class="s">"What's your name?"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">username</span> <span class="k">=</span> <span class="n">dialogInput</span><span class="o">(</span><span class="s">"What's your name?"</span><span class="o">)</span>
+</code></pre><h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.audio.AudioManager</span><span class="o">;</span>
 
@@ -1015,42 +1008,149 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 
 <span class="nc">AudioManager</span><span class="o">.</span><span class="n">play</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
 </code></pre>
-<p>Supported format:</p>
+<p>Supported audio format:</p>
 
 <ul>
 <li>mp3</li>
 <li>wav</li>
 </ul>
 
-<p>And you can replace the path string with a <code>File</code> object.</p>
+<p>You can replace the path string with a <code>File</code> object.</p>
+
+<p><br/><br/></p>
 
 <p>You can also create an <code>AudioPlayer</code> object to better control the playing of the music
 (i.e. start the music later, or stop it while playing).</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.audio.AudioManager</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.media.AudioManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.frice.utils.media.AudioPlayer</span><span class="o">;</span>
 
 <span class="n">AudioPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
 <span class="c1">// start playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 <span class="c1">// exit playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">exit</span><span class="o">();</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.audio.getPlayer</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.getPlayer</span>
 
 <span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getPlayer</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
 <span class="c1">// start playing
 </span><span class="n">player</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
 <span class="c1">// exit playing
 </span><span class="n">player</span><span class="p">.</span><span class="n">exit</span><span class="p">()</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.audio.AudioManager</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.AudioManager</span>
 
 <span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">AudioManager</span><span class="o">.</span><span class="n">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
 <span class="c1">// start playing
 </span><span class="n">player</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
 <span class="c1">// exit playing
 </span><span class="n">player</span><span class="o">.</span><span class="n">exit</span><span class="o">()</span>
+</code></pre>
+<p><code>AudioPlayer</code> extends Thread in Java, so other operations are also allowed.</p>
+
+<p><br/><br/><br/><br/><br/><br/></p>
+
+<p>Also, if you prefer playing audio using a thread pool, you can get <code>Runnable</code> instances from the <code>AudioPlayer</code> object.</p>
+<pre class="highlight java tab-java"><code><span class="n">Runnable</span> <span class="n">runnable</span> <span class="o">=</span> <span class="n">audioPlayer</span><span class="o">.</span><span class="na">getRunnable</span><span class="o">();</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">runnable</span> <span class="p">=</span> <span class="n">audioPlayer</span><span class="p">.</span><span class="n">runnable</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">runnable</span> <span class="k">=</span> <span class="n">audioPlayer</span><span class="o">.</span><span class="n">getRunnable</span>
+</code></pre>
+<p><br/><br/><br/></p>
+
+<p>Alternatively, you can use the JavaFX media API wrapper, called <code>MediaManager</code>.  </p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">javafx.scene.media.MediaPlayer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.frice.utils.media.MediaManager</span><span class="o">;</span>
+
+<span class="n">MediaPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">MediaManager</span><span class="o">.</span><span class="na">getMediaPlayer</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">);</span>
+<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.getMediaPlayer</span>
+
+<span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getMediaPlayer</span><span class="p">(</span><span class="s">"./res/bgm.mp3"</span><span class="p">)</span>
+<span class="n">player</span><span class="p">.</span><span class="n">play</span><span class="p">()</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.MediaManager</span>
+
+<span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">MediaManager</span><span class="o">.</span><span class="n">getMediaPlayer</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">play</span><span class="o">()</span>
+</code></pre>
+<p><code>MediaPlayer</code> is provided by JavaFX, it has a lot of useful APIs.</p>
+
+<aside class="warning">
+    JavaFX's media APIs are buggy on Ubuntu 16.04 with Java version lower than 9, so please be careful with your target platforms when choosing media APIs.
+</aside>
+
+<p><br/></p>
+
+<p>And of course, you can play them directly:</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.media.MediaManager</span><span class="o">;</span>
+
+<span class="n">MediaManager</span><span class="o">.</span><span class="na">playMedia</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.playMedia</span>
+
+<span class="n">playMedia</span><span class="p">(</span><span class="s">"./res/bgm.mp3"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.MediaManager</span>
+
+<span class="nc">MediaManager</span><span class="o">.</span><span class="n">playMedia</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">)</span>
 </code></pre><h2 id='database'>Database</h2>
 <p>FriceEngine provides a key-value based database, and there&#39;re two implementations.</p>
+<h3 id='preference'>Preference</h3>
+<p>This is the recommended database implementation.</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.data.Preference</span><span class="o">;</span>
 
-<p>TODO</p>
+<span class="n">Preference</span> <span class="n">preference</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Preference</span><span class="o">(</span><span class="s">"./save.properties"</span><span class="o">);</span>
+<span class="n">preference</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">);</span>
+<span class="n">preference</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="s">"key2"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">preference</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"default value"</span><span class="o">);</span>
+<span class="kt">boolean</span> <span class="n">value2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">boolean</span><span class="o">)</span> <span class="n">preference</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.Preference</span>
+
+<span class="kd">val</span> <span class="py">preference</span> <span class="p">=</span> <span class="n">Preference</span><span class="p">(</span><span class="s">"./save.properties"</span><span class="p">)</span>
+<span class="n">preference</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">)</span>
+<span class="n">preference</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"key2"</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">value</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"default value"</span><span class="p">)</span> <span class="k">as</span> <span class="n">String</span>
+<span class="kd">val</span> <span class="py">value2</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> <span class="k">as</span> <span class="n">Boolean</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.Preference</span>
+
+<span class="k">val</span> <span class="n">preference</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Preference</span><span class="o">(</span><span class="s">"./save.properties"</span><span class="o">)</span>
+<span class="n">preference</span><span class="o">.</span><span class="n">insert</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">)</span>
+<span class="n">preference</span><span class="o">.</span><span class="n">insert</span><span class="o">(</span><span class="s">"key2"</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">value</span> <span class="k">=</span> <span class="n">preference</span><span class="o">.</span><span class="n">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"default value"</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<span class="k">val</span> <span class="n">value2</span> <span class="k">=</span> <span class="n">preference</span><span class="o">.</span><span class="n">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="kc">false</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span>
+</code></pre>
+<p>The usage is very simple, and it&#39;s possible to operate an <code>Int</code>, <code>String</code> or a <code>Boolean</code> directly.</p>
+
+<p><br/><br/><br/><br/><br/></p>
+
+<p>If you hate casting, you can use the generic <code>query</code> -- <code>queryT</code>.<br>
+It will recognize your expected type from the default value:</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">preference</span><span class="o">.</span><span class="na">queryT</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"default value"</span><span class="o">);</span>
+<span class="kt">boolean</span> <span class="n">value2</span> <span class="o">=</span> <span class="n">preference</span><span class="o">.</span><span class="na">queryT</span><span class="o">(</span><span class="s">"key2"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">value</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">queryT</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"default value"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">value2</span><span class="p">:</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">queryT</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">value</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">preference</span><span class="o">.</span><span class="n">queryT</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"default value"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">value2</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="n">preference</span><span class="o">.</span><span class="n">queryT</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</code></pre>
+<p><br/></p>
+
+<p><code>Preference</code> is based on the Java Preference API.<br>
+It stores value in a &quot;properties&quot; file.</p>
+
+<p>Additionally, you can use the <code>list()</code> method to get all the key-value pair as a list.</p>
+<h3 id='xmlpreference'>XMLPreference</h3>
+<p>It provides <code>insert</code>, <code>query</code> and <code>queryT</code> as well as <a href="#preference"><code>Preference</code></a>.</p>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span><span class="o">;</span>
+
+<span class="n">XMLPreference</span> <span class="n">preference</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XMLPreference</span><span class="o">(</span><span class="s">"./save.xml"</span><span class="o">);</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span>
+
+<span class="kd">val</span> <span class="py">preference</span> <span class="p">=</span> <span class="n">XMLPreference</span><span class="p">(</span><span class="s">"./save.xml"</span><span class="p">)</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span>
+
+<span class="k">val</span> <span class="n">preference</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">XMLPreference</span><span class="o">(</span><span class="s">"./save.xml"</span><span class="o">)</span>
+</code></pre>
+<p><br/></p>
+
+<p><code>XMLPreference</code> is based on the Java XML API.<br>
+It stores value in a &quot;xml&quot; file.</p>
+
+<p>Additionally, you can use the <code>getFile()</code> method to get the file that stores the data.</p>
 
 <!-- ## BoolArray -->
 
@@ -1158,17 +1258,25 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 
 <!-- </aside> -->
 <h1 id='building-friceengine'>Building FriceEngine</h1>
-<p>You can build the FriceEngine by the following command if JDK is installed:</p>
+<p>You can build the FriceEngine yourself by the following command if JDK is installed:</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/icela/FriceEngine.git
 <span class="gp">$ </span><span class="nb">cd </span>FriceEngine/
 
 <span class="c"># You have JDK only</span>
 <span class="gp">$ </span>chmod a+x ./gradlew
-<span class="gp">$ </span>./gradlew assembleRelease
+<span class="gp">$ </span>./gradlew fatJar
+<span class="gp">$ </span>./gradlew sourcesJar
 
 <span class="c"># You have gradle executable in $PATH, you can build it with</span>
-<span class="gp">$ </span>gradle assembleRelease
-</code></pre><h1 id='github-stuffs'>GitHub stuffs</h1><h2 id='release'>Release</h2>
+<span class="gp">$ </span>gradle fatJar
+<span class="gp">$ </span>gradle sourcesJar
+</code></pre>
+<p><br/></p>
+
+<p>And you can find the build result under <code>build/libs/</code>.</p>
+
+<p>The library jar is <code>engine-all-[version].jar</code>, and the source jar is <code>engine-src-[version].jar</code>.</p>
+<h1 id='github-stuffs'>GitHub stuffs</h1><h2 id='release'>Release</h2>
 <p>See <a href="https://github.com/icela/FriceEngine/releases">GitHub releases</a>.</p>
 
 <p>FriceEngine publishes its newest version here.</p>
@@ -1177,6 +1285,84 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 
 <p>When there&#39;s feature request/bug report/cleanup request,
 an issue will be opened here, and a milestone will be distributed to it.</p>
+<h2 id='sub-projects'>Sub projects</h2>
+<ul>
+<li>on JVM</li>
+</ul>
+
+<p>Swing and JavaFX are both supported.</p>
+
+<p><a href="https://github.com/icela/FriceEngine"><img src="https://img.shields.io/github/stars/icela/FriceEngine.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceEngine"><img src="https://img.shields.io/github/languages/top/icela/FriceEngine.svg" alt="GitHub top language" /></a>
+<a href="https://travis-ci.org/icela/FriceEngine"><img src="https://travis-ci.org/icela/FriceEngine.svg?branch=master" alt="Build Status" /></a>
+<a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="https://ci.appveyor.com/api/projects/status/75d7wx28u3tgtnat?svg=true" alt="Build status" /></a>
+<a href="https://circleci.com/gh/icela/FriceEngine"><img src="https://circleci.com/gh/icela/FriceEngine.svg?style=svg" alt="CircleCI" /></a>
+<a href="https://app.codeship.com/projects/214712"><img src="https://codeship.com/projects/a1d7bc60-0a30-0135-8b3c-6ed4d7e33e57/status?branch=master" alt="CodeShip" /></a>
+<a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a>
+<a href="https://github.com/icela/FriceEngine"><img src="https://img.shields.io/github/downloads/icela/FriceEngine/total.svg" alt="Github All Releases" /></a>
+<a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine/month.svg" alt="Month" /></a>
+<a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine/week.svg" alt="Week" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceEngine.svg" alt="License: AGPL v3" /></a>
+<a href="https://github.com/KotlinBy/awesome-kotlin"><img src="https://kotlin.link/awesome-kotlin.svg" alt="Awesome Kotlin Badge" /></a></p>
+
+<ul>
+<li>Kotlin DSL</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceEngine-DSL"><img src="https://img.shields.io/github/stars/icela/FriceEngine-DSL.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceEngine-DSL"><img src="https://img.shields.io/github/languages/top/icela/FriceEngine-DSL.svg" alt="GitHub top language" /></a>
+<a href="https://jitpack.io/#icela/FriceEngine-DSL"><img src="https://jitpack.io/v/icela/FriceEngine-DSL.svg" alt="Friceengine dsl" /></a>
+<a href="https://travis-ci.org/icela/FriceEngine-DSL"><img src="https://travis-ci.org/icela/FriceEngine-DSL.svg?branch=master" alt="Build Status" /></a>
+<a href="https://ci.appveyor.com/project/ice1000/friceengine-dsl/branch/master"><img src="https://ci.appveyor.com/api/projects/status/tne8wv0mofxgg31p/branch/master?svg=true" alt="Build status" /></a>
+<a href="https://circleci.com/gh/icela/FriceEngine-DSL"><img src="https://circleci.com/gh/icela/FriceEngine-DSL.svg?style=svg" alt="CircleCI" /></a>
+<a href="https://app.codeship.com/projects/239720"><img src="https://app.codeship.com/projects/02ce9100-61f9-0135-bc9e-7aecbc4a3d79/status?branch=master" alt="Codeship Status for icela/FriceEngine-DSL" /></a>
+<a href="https://github.com/icela/FriceEngine-DSL"><img src="https://img.shields.io/github/downloads/icela/FriceEngine-DSL/total.svg" alt="Github All Releases" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceEngine-DSL.svg" alt="License: GPL v3" /></a></p>
+
+<ul>
+<li>on CLR</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceEngine-CSharp"><img src="https://img.shields.io/github/stars/icela/FriceEngine-CSharp.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceEngine-CSharp"><img src="https://img.shields.io/github/languages/top/icela/FriceEngine-CSharp.svg" alt="GitHub top language" /></a>
+<a href="https://github.com/icela/FriceEngine-CSharp"><img src="https://img.shields.io/github/downloads/icela/FriceEngine-CSharp/total.svg" alt="Github All Releases" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceEngine-CSharp.svg" alt="License: GPL v3" /></a></p>
+
+<ul>
+<li>in Lisp</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceEngine-Racket"><img src="https://img.shields.io/github/stars/icela/FriceEngine-Racket.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceEngine-Racket"><img src="https://img.shields.io/github/languages/top/icela/FriceEngine-Racket.svg" alt="GitHub top language" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceEngine-Racket.svg" alt="License: GPL v3" /></a></p>
+
+<ul>
+<li>in Ruby</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceEngine-Ruby"><img src="https://img.shields.io/github/stars/icela/FriceEngine-Ruby.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceEngine-Ruby"><img src="https://img.shields.io/github/languages/top/icela/FriceEngine-Ruby.svg" alt="GitHub top language" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceEngine-Ruby.svg" alt="License: GPL v3" /></a></p>
+
+<ul>
+<li>Demos (for various languages)</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceDemo"><img src="https://img.shields.io/github/stars/icela/FriceDemo.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://github.com/icela/FriceDemo"><img src="https://img.shields.io/github/languages/count/icela/FriceDemo.svg" alt="GitHub language count" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceDemo.svg" alt="License: GPL v3" /></a></p>
+
+<ul>
+<li>Designer</li>
+</ul>
+
+<p><a href="https://github.com/icela/FriceDesigner"><img src="https://img.shields.io/github/stars/icela/FriceDesigner.svg?style=social&amp;label=Star&amp;style=plastic" alt="GitHub stars" /></a>
+<a href="https://travis-ci.org/icela/FriceDesigner"><img src="https://travis-ci.org/icela/FriceDesigner.svg?branch=master" alt="Build Status" /></a>
+<a href="https://ci.appveyor.com/project/ice1000/fricedesigner/branch/master"><img src="https://ci.appveyor.com/api/projects/status/qbkbo8o59837nbbn/branch/master?svg=true" alt="Build status" /></a>
+<a href="https://circleci.com/gh/icela/FriceDesigner"><img src="https://circleci.com/gh/icela/FriceDesigner.svg?style=svg" alt="CircleCI" /></a>
+<a href="https://app.codeship.com/projects/239721"><img src="https://app.codeship.com/projects/b0e917b0-61fa-0135-d48c-76c7a8899292/status?branch=master" alt="Codeship Status for icela/FriceDesigner" /></a>
+<a href="https://github.com/icela/FriceDesigner"><img src="https://img.shields.io/github/downloads/icela/FriceDesigner/total.svg" alt="Github All Releases" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/github/license/icela/FriceDesigner.svg" alt="License: GPL v3" /></a></p>
 <h2 id='milestones'>Milestones</h2>
 <p>See <a href="https://github.com/icela/FriceEngine/milestones">GitHub milestones</a>.</p>
 
