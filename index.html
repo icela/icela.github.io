@@ -948,7 +948,9 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span>
 <span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span> <span class="c1">// alternative
 </span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">))</span>
-</code></pre><h3 id='rotating'>Rotating</h3>
+</code></pre>
+<p>The number <code>10</code> in the code above stands for &quot;10 pixels per second squared&quot;.</p>
+<h3 id='rotating'>Rotating</h3>
 <p>TODO</p>
 <h3 id='scaling'>Scaling</h3>
 <p>TODO</p>
@@ -1057,10 +1059,28 @@ the two parameters are the acceleration on <code>x</code> axis and <code>y</code
 
 <p><br/><br/><br/><br/><br/><br/></p>
 
-<p>Also, if you prefer playing audio using a thread pool, you can get <code>Runnable</code> instances from the <code>AudioPlayer</code> object.</p>
-<pre class="highlight java tab-java"><code><span class="n">Runnable</span> <span class="n">runnable</span> <span class="o">=</span> <span class="n">audioPlayer</span><span class="o">.</span><span class="na">getRunnable</span><span class="o">();</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">runnable</span> <span class="p">=</span> <span class="n">audioPlayer</span><span class="p">.</span><span class="n">runnable</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">runnable</span> <span class="k">=</span> <span class="n">audioPlayer</span><span class="o">.</span><span class="n">getRunnable</span>
+<p>It&#39;s recommended to play short audio in a thread pool, like this.</p>
+<pre class="highlight java tab-java"><code><span class="n">ThreadPoolExecutor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadPoolExecutor</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span>
+    <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">,</span>
+    <span class="k">new</span> <span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;(</span><span class="mi">20</span><span class="o">),</span>
+    <span class="k">new</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardPolicy</span><span class="o">());</span>
+
+<span class="c1">// execute</span>
+<span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">AudioManager</span><span class="o">.</span><span class="na">getPlayer</span><span class="o">(</span><span class="s">"./res/shake.mp3"</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">executor</span> <span class="p">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span>
+    <span class="n">TimeUnit</span><span class="p">.</span><span class="n">SECONDS</span><span class="p">,</span>
+    <span class="n">ArrayBlockingQueue</span><span class="p">&lt;&gt;(</span><span class="m">20</span><span class="p">),</span>
+    <span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">DiscardPolicy</span><span class="p">())</span>
+
+<span class="c1">// execute
+</span><span class="n">executor</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">getPlayer</span><span class="p">(</span><span class="s">"./res/shake.mp3"</span><span class="p">))</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">executor</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ThreadPoolExecutor</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span>
+    <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">SECONDS</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nc">ArrayBlockingQueue</span><span class="o">&lt;&gt;(</span><span class="mi">20</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nc">ThreadPoolExecutor</span><span class="o">.</span><span class="nc">DiscardPolicy</span><span class="o">())</span>
+
+<span class="c1">// execute
+</span><span class="n">executor</span><span class="o">.</span><span class="n">execute</span><span class="o">(</span><span class="nc">AudioManager</span><span class="o">.</span><span class="n">getPlayer</span><span class="o">(</span><span class="s">"./res/shake.mp3"</span><span class="o">))</span>
 </code></pre>
 <p><br/><br/><br/></p>
 
