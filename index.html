@@ -445,14 +445,13 @@
 </aside>
 
 <ul>
-<li>Why light?
+<li><p>Why light?</p>
 
 <ul>
 <li>The release build jar is about 1.6mb (with a 1mb Kotlin runtime) only.</li>
-<li>All you have to do is import the jar into your project.
-<br/></li>
+<li>All you have to do is import the jar into your project.</li>
 </ul></li>
-<li>Why native?
+<li><p>Why native?</p>
 
 <ul>
 <li>This engine is completely platform-independent.</li>
@@ -465,8 +464,7 @@ Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="
 <ol>
 <li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
 <li>Create or open a project</li>
-<li><a href="https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project">Import the jar</a>
-into your project</li>
+<li><a href="https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project">Import the jar</a> into your project</li>
 </ol>
 <h2 id='with-eclipse'>With Eclipse</h2>
 <p>AppVeyor is used to automating the build of FriceEngine.<br>
@@ -475,8 +473,7 @@ Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="
 <ol>
 <li>Download the jar <a href="https://ci.appveyor.com/project/ice1000/friceengine/build/artifacts">here</a></li>
 <li>Create or open a project</li>
-<li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a>
-into your project</li>
+<li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a> into your project</li>
 </ol>
 <h2 id='with-gradle-maven-sbt'>With Gradle/Maven/SBT</h2>
 <p>Newest version: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
@@ -508,7 +505,8 @@ into your project</li>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game._</span>
 
 <span class="k">object</span> <span class="nc">MyGame</span> <span class="k">extends</span> <span class="nc">Game</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nc">Initializer</span><span class="o">.</span><span class="n">launch</span><span class="o">(</span><span class="nc">MyGame</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+    <span class="nc">Initializer</span><span class="o">.</span><span class="n">launch</span><span class="o">(</span><span class="nc">MyGame</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre>
 <p>You should create a class extending the <code>org.frice.Game</code> class.
@@ -548,10 +546,11 @@ We invoke the empty one first.</p>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.game._</span>
 
 <span class="k">object</span> <span class="nc">MyGame</span> <span class="k">extends</span> <span class="nc">GameFX</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nc">Initializer</span><span class="o">.</span><span class="n">launch</span><span class="o">(</span><span class="nc">MyGame</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+    <span class="nc">Initializer</span><span class="o">.</span><span class="n">launch</span><span class="o">(</span><span class="nc">MyGame</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre>
-<p>Here&#39;s a brief comparison between Swing&#39;s <code>Game</code> and JavaFX&#39;s <code>GameFX</code>.</p>
+<p>Here&#39;s a brief comparison between Swing&#39;s <code>Game</code> and JavaFX&#39;s <code>GameFX</code> (these features are differently implemented between Swing and JavaFX).</p>
 
 <table><thead>
 <tr>
@@ -617,6 +616,11 @@ We invoke the empty one first.</p>
 </tr>
 <tr>
 <td style="text-align: left">Key listener</td>
+<td style="text-align: center">√</td>
+<td style="text-align: center">√</td>
+</tr>
+<tr>
+<td style="text-align: left">Text measuring</td>
 <td style="text-align: center">√</td>
 <td style="text-align: center">√</td>
 </tr>
@@ -939,10 +943,16 @@ and stop all the animations by invoking <code>stopAnims()</code>.</p>
 <h3 id='simple-move'>Simple move</h3>
 <p>For instance, a simple uniform motion can be represented by a <code>SimpleMove</code>,
 the two parameters are the speed on <code>x</code> axis and <code>y</code> axis respectively.</p>
-<pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.anim.move.SimpleMove</span><span class="o">;</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.anim.move.SimpleMove</span>
+
+<span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
 <span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">SimpleMove</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span> <span class="c1">// alternative
-</span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.anim.move.SimpleMove</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">SimpleMove</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
 </code></pre>
 <p>Change the parameter and run to better understand those parameters.</p>
 
@@ -950,18 +960,30 @@ the two parameters are the speed on <code>x</code> axis and <code>y</code> axis 
 <h3 id='accelerate-move'>Accelerate Move</h3>
 <p>A simple accelerate motion can be represented by a <code>AccelerateMove</code>,
 the two parameters are the acceleration on <code>x</code> axis and <code>y</code> axis respectively.</p>
-<pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span> <span class="m">10.0</span><span class="p">))</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.anim.move.AccelerateMove</span><span class="o">;</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.anim.move.AccelerateMove</span>
+
+<span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span> <span class="m">10.0</span><span class="p">))</span>
 <span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">AccelerateMove</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span> <span class="m">10.0</span><span class="p">)</span> <span class="c1">// alternative
-</span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">))</span>
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.anim.move.AccelerateMove</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">AccelerateMove</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">))</span>
 </code></pre>
 <p>The number <code>10</code> in the code above stands for &quot;10 pixels per second squared&quot;.</p>
 <h3 id='rotating'>Rotating</h3>
 <p>You can make your game object rotate <code>x</code> radian per second by using this:</p>
-<pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">RotateAnim</span><span class="o">(</span><span class="n">x</span><span class="o">));</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">RotateAnim</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">RotateAnim</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">// alternative
-</span></code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">RotateAnim</span><span class="o">(</span><span class="n">x</span><span class="o">))</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.anim.rotate.SimpleRotate</span><span class="o">;</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="na">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleRotate</span><span class="o">(</span><span class="n">x</span><span class="o">));</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.anim.rotate.SimpleRotate</span>
+
+<span class="n">gameObject</span><span class="p">.</span><span class="n">addAnim</span><span class="p">(</span><span class="n">SimpleRotate</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">gameObject</span><span class="p">.</span><span class="n">anims</span> <span class="p">+=</span> <span class="n">SimpleRotate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">// alternative
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.anim.rotate.SimpleRotate</span>
+
+<span class="n">gameObject</span><span class="o">.</span><span class="n">addAnim</span><span class="o">(</span><span class="k">new</span> <span class="nc">SimpleRotate</span><span class="o">(</span><span class="n">x</span><span class="o">))</span>
 </code></pre>
 <p>For example, if you want to turn your game object around per second, you can use the code above and replace <code>x</code> with <code>Math.PI * 2</code>.</p>
 <h3 id='scaling'>Scaling</h3>
