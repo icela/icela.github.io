@@ -234,6 +234,11 @@
                   </li>
                   <li>
                     <a href="#with-gradle-maven-sbt" class="toc-h2 toc-link" data-title="Installation">With Gradle/Maven/SBT</a>
+                    <ul class="toc-list-h3">
+                      <li>
+                        <a href="#customizing-jars" class="toc-h3 toc-link" data-title="Installation">Customizing jars</a>
+                      </li>
+                    </ul>
                   </li>
               </ul>
           </li>
@@ -289,13 +294,13 @@
             <a href="#creating-games" class="toc-h1 toc-link" data-title="Creating Games">Creating Games</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creating-simple-resources" class="toc-h2 toc-link" data-title="Creating Games">Creating simple resources</a>
+                    <a href="#creating-resources" class="toc-h2 toc-link" data-title="Creating Games">Creating resources</a>
                     <ul class="toc-list-h3">
                       <li>
                         <a href="#color-resources" class="toc-h3 toc-link" data-title="Creating Games">Color resources</a>
                       </li>
                       <li>
-                        <a href="#simple-image-resources" class="toc-h3 toc-link" data-title="Creating Games">Simple image resources</a>
+                        <a href="#image-resources" class="toc-h3 toc-link" data-title="Creating Games">Image resources</a>
                       </li>
                     </ul>
                   </li>
@@ -341,7 +346,7 @@
             <a href="#higher-level-usage" class="toc-h1 toc-link" data-title="Higher Level Usage">Higher Level Usage</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creating-complex-resources" class="toc-h2 toc-link" data-title="Higher Level Usage">Creating complex resources</a>
+                    <a href="#complex-resources" class="toc-h2 toc-link" data-title="Higher Level Usage">Complex resources</a>
                     <ul class="toc-list-h3">
                       <li>
                         <a href="#particle-resources" class="toc-h3 toc-link" data-title="Higher Level Usage">Particle resources</a>
@@ -349,10 +354,10 @@
                       <li>
                         <a href="#curve-resources" class="toc-h3 toc-link" data-title="Higher Level Usage">Curve resources</a>
                       </li>
-                      <li>
-                        <a href="#complex-image-resources" class="toc-h3 toc-link" data-title="Higher Level Usage">Complex image resources</a>
-                      </li>
                     </ul>
+                  </li>
+                  <li>
+                    <a href="#frame-animations" class="toc-h2 toc-link" data-title="Higher Level Usage">Frame animations</a>
                   </li>
                   <li>
                     <a href="#using-customdraw" class="toc-h2 toc-link" data-title="Higher Level Usage">Using customDraw</a>
@@ -476,9 +481,58 @@ Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="
 <li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a> into your project</li>
 </ol>
 <h2 id='with-gradle-maven-sbt'>With Gradle/Maven/SBT</h2>
-<p>Newest version: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></p>
+<p>Newest version: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a><br>
+Downloads: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine/month.svg" alt="Month" /></a></p>
 
 <p>View <a href="https://jitpack.io/#icela/FriceEngine">instructions on the JitPack website</a></p>
+<h3 id='customizing-jars'>Customizing jars</h3>
+<p>You can specify the jars you want to download, by using gradle.</p>
+
+<p>First, you&#39;ll see the newest version in the version badge above (it should be a string started with <code>v</code> like <code>v1.7.11</code>).<br>
+Let&#39;s call it <code>frice_version</code>.</p>
+
+<p>Look at your <code>build.gradle</code>. Add these codes:</p>
+<pre class="highlight gradle tab-gradle"><code><span class="k">buildscript</span> <span class="o">{</span>
+  <span class="n">ext</span><span class="o">.</span><span class="na">frice_version</span> <span class="o">=</span> <span class="s1">'v1.7.11'</span> <span class="c1">// replace with the newest one</span>
+<span class="o">}</span>
+</code></pre>
+<p><br/><br/><br/></p>
+
+<p>And choose to add some of these as your dependecies:</p>
+<pre class="highlight gradle tab-gradle"><code><span class="c1">// old, necessary</span>
+<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version"</span>
+<span class="c1">// new, optional, if you speak Kotlin</span>
+<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:sources"</span>
+<span class="c1">// new, for java users</span>
+<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:all"</span>
+<span class="c1">// new, optional</span>
+<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:javadoc"</span>
+</code></pre>
+<p>The four dependecies are described in the table below:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Jar Suffix</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">No suffix</td>
+<td style="text-align: left">The smallest necessary jar (about 600kb). <br/> You should also add the kotlin stdlib to the classpath to run your code. <br/> If you use this, don&#39;t use <code>all</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center"><code>sources</code></td>
+<td style="text-align: left">The jar containing the source code.</td>
+</tr>
+<tr>
+<td style="text-align: center"><code>all</code></td>
+<td style="text-align: left">The fat jar (about 1600kb). <br/> You will be able to run your code only with this jar in the classpath. <br/> If you use this, don&#39;t use the one with no suffix.</td>
+</tr>
+<tr>
+<td style="text-align: center"><code>javadoc</code></td>
+<td style="text-align: left">The jar containing FriceEngine&#39;s javadoc.</td>
+</tr>
+</tbody></table>
 
 <!-- ## With NuGet -->
 
@@ -807,7 +861,7 @@ which corresponds to <code>FObject</code> in codes.</p>
 
 <p>Resources like colors, shapes and images are treated as <code>FResource</code>s.
 <code>FObject</code>s may hold some <code>FResource</code>s, i.e. an image object (<code>ImageObject</code>, which extends <code>FObject</code>) holds an image resource (<code>ImageResource</code>, which extends <code>FResource</code>) (will be explained later).</p>
-<h2 id='creating-simple-resources'>Creating simple resources</h2><h3 id='color-resources'>Color resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.graphics.ColorResource</span><span class="o">;</span>
+<h2 id='creating-resources'>Creating resources</h2><h3 id='color-resources'>Color resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.graphics.ColorResource</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="o">;</span>
 
 <span class="n">ColorResource</span> <span class="n">colorResource0</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorResource</span><span class="o">(</span><span class="mh">0xFF00FF</span><span class="o">);</span>
@@ -836,7 +890,7 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 </code></p>
 
 <p>and so on.</p>
-<h3 id='simple-image-resources'>Simple image resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.image.ImageResource</span><span class="o">;</span>
+<h3 id='image-resources'>Image resources</h3><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.image.ImageResource</span><span class="o">;</span>
 
 <span class="n">ImageResource</span> <span class="n">imageResource</span> <span class="o">=</span> <span class="n">ImageResource</span><span class="o">.</span><span class="na">fromPath</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">);</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.resource.image.ImageResource</span>
@@ -881,6 +935,8 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 <td style="text-align: left">Creates an empty image for JavaFX</td>
 </tr>
 </tbody></table>
+
+<p>And here&#39;s a simple example of using the <code>FileImageResource</code> and <code>WebImageResource</code>.</p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.resource.image.FileImageResource</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.frice.resource.image.WebImageResource</span><span class="o">;</span>
 
@@ -897,7 +953,33 @@ GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELL
 <span class="k">val</span> <span class="n">fileImageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FileImageResource</span><span class="o">(</span><span class="s">"./1.png"</span><span class="o">)</span>
 <span class="k">val</span> <span class="n">webImageResource</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">WebImageResource</span><span class="o">(</span><span class="s">"https://icela.github.io/images/logo.png"</span><span class="o">)</span>
 </code></pre>
-<p>And here&#39;s a simple example of using the <code>FileImageResource</code> and <code>WebImageResource</code>.</p>
+<p><br/><br/><br/><br/><br/></p>
+
+<p>Also, you can modify an image by invoking its methods.<br>
+You can flip it (<code>flip(Boolean)</code>), scale it (<code>scale(Double, Double)</code>), make a copy of it (<code>clone()</code>), and cut a smaller part of it (<code>part(Int, Int, Int, Int)</code>).</p>
+<pre class="highlight java tab-java"><code><span class="n">ImageResource</span> <span class="n">image</span> <span class="o">=</span> <span class="n">ImageResource</span><span class="o">.</span><span class="na">fromPath</span><span class="o">(</span><span class="s">"res/icon.png"</span><span class="o">);</span>
+<span class="n">ImageResource</span> <span class="n">image2</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">flip</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// flip horizontally</span>
+<span class="n">ImageResource</span> <span class="n">image3</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">flip</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> <span class="c1">// flip vertically</span>
+<span class="n">ImageResource</span> <span class="n">image4</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span> <span class="c1">// make a copy</span>
+<span class="n">ImageResource</span> <span class="n">image5</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">scale</span><span class="o">(</span><span class="mf">1.1</span><span class="o">,</span> <span class="mf">0.9</span><span class="o">);</span> <span class="c1">// 1.1 times wider and 0.9 times longer</span>
+<span class="n">ImageResource</span> <span class="n">image6</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">part</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span> <span class="c1">// cut a sub image with (3 * 4) size at (1, 2)</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">image</span> <span class="p">=</span> <span class="n">ImageResource</span><span class="p">.</span><span class="n">fromPath</span><span class="p">(</span><span class="s">"res/icon.png"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">image2</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="c1">// flip horizontally
+</span><span class="kd">val</span> <span class="py">image3</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="c1">// flip verticall
+</span><span class="kd">val</span> <span class="py">image4</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span> <span class="c1">// make a copy
+</span><span class="kd">val</span> <span class="py">image5</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">scale</span><span class="p">(</span><span class="m">1.1</span><span class="p">,</span> <span class="m">0.9</span><span class="p">)</span> <span class="c1">// 1.1 times wider and 0.9 times longer
+</span><span class="kd">val</span> <span class="py">image6</span> <span class="p">=</span> <span class="n">image</span><span class="p">.</span><span class="n">part</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span> <span class="c1">// cut a sub image with (3 * 4) size at (1, 2)
+</span></code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">image</span> <span class="k">=</span> <span class="nc">ImageResource</span><span class="o">.</span><span class="n">fromPath</span><span class="o">(</span><span class="s">"res/icon.png"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">image2</span> <span class="k">=</span> <span class="n">image</span><span class="o">.</span><span class="n">flip</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="c1">// flip horizontally
+</span><span class="k">val</span> <span class="n">image3</span> <span class="k">=</span> <span class="n">image</span><span class="o">.</span><span class="n">flip</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span> <span class="c1">// flip vertically
+</span><span class="k">val</span> <span class="n">image4</span> <span class="k">=</span> <span class="n">image</span><span class="o">.</span><span class="n">clone</span><span class="o">()</span> <span class="c1">// make a copy
+</span><span class="k">val</span> <span class="n">image5</span> <span class="k">=</span> <span class="n">image</span><span class="o">.</span><span class="n">scale</span><span class="o">(</span><span class="mf">1.1</span><span class="o">,</span> <span class="mf">0.9</span><span class="o">)</span> <span class="c1">// 1.1 times wider and 0.9 times longer
+</span><span class="k">val</span> <span class="n">image6</span> <span class="k">=</span> <span class="n">image</span><span class="o">.</span><span class="n">part</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span> <span class="c1">// cut a sub image with (3 * 4) size at (1, 2)
+</span></code></pre>
+<p>See the comments in the code example carefully.<br>
+And you know all the details.</p>
+
+<p>You can also read the javadoc of those functions.</p>
 <h2 id='creating-objects'>Creating objects</h2>
 <p>As mentioned above, FriceEngine manages games through &quot;object&quot;s.
 Here we&#39;ll see how to create &quot;object&quot;s.</p>
@@ -1065,7 +1147,9 @@ This is also very easy. You can create a collision box from another collision bo
 <pre class="highlight java tab-java"><code><span class="n">gameObject</span><span class="o">.</span><span class="na">setCollisionBox</span><span class="o">(</span><span class="n">gameObject</span><span class="o">.</span><span class="na">smallerBox</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
 </code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="n">gameObject</span><span class="p">.</span><span class="n">collisionBox</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">smallerBox</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
 </code></pre><pre class="highlight scala tab-scala"><code><span class="n">gameObject</span><span class="o">.</span><span class="n">setCollisionBox</span><span class="o">(</span><span class="n">gameObject</span><span class="o">.</span><span class="n">smallerBox</span><span class="o">(</span><span class="mi">5</span><span class="o">))</span>
-</code></pre><h1 id='higher-level-usage'>Higher Level Usage</h1><h2 id='creating-complex-resources'>Creating complex resources</h2><h3 id='particle-resources'>Particle resources</h3>
+</code></pre><h1 id='higher-level-usage'>Higher Level Usage</h1><h2 id='complex-resources'>Complex resources</h2>
+<p>Here&#39;s the instructions of using some complex resources.</p>
+<h3 id='particle-resources'>Particle resources</h3>
 <p>TODO</p>
 <h3 id='curve-resources'>Curve resources</h3>
 <p>TODO</p>
@@ -1073,8 +1157,10 @@ This is also very easy. You can create a collision box from another collision bo
 <!-- ### Function resources -->
 
 <!-- TODO -->
-<h3 id='complex-image-resources'>Complex image resources</h3>
-<p><code>PartImageResource</code> and <code>FrameImageResource</code> are based on other <code>ImageResource</code> objects.</p>
+<h2 id='frame-animations'>Frame animations</h2>
+<p>To play a frame animation (which is totally different from other animations), you need <code>FrameImageResource</code>.</p>
+
+<p><code>FrameImageResource</code> is based on other <code>ImageResource</code>s.</p>
 
 <p>TODO</p>
 <h2 id='using-customdraw'>Using customDraw</h2>
