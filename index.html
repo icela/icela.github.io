@@ -1197,13 +1197,13 @@ This is also very easy. You can create a collision box from another collision bo
 </code></pre><pre class="highlight scala tab-scala"><code><span class="k">val</span> <span class="n">username</span> <span class="k">=</span> <span class="n">dialogInput</span><span class="o">(</span><span class="s">"What's your name?"</span><span class="o">)</span>
 </code></pre><h2 id='playing-music'>Playing music</h2>
 <p>FriceEngine provides very simple API to play music stored in files.</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.audio.AudioManager</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.util.audio.AudioManager</span><span class="o">;</span>
 
 <span class="n">AudioManager</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.audio.play</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.audio.play</span>
 
 <span class="n">play</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.audio.AudioManager</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.audio.AudioManager</span>
 
 <span class="nc">AudioManager</span><span class="o">.</span><span class="n">play</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
 </code></pre>
@@ -1220,22 +1220,22 @@ This is also very easy. You can create a collision box from another collision bo
 
 <p>You can also create an <code>AudioPlayer</code> object to better control the playing of the music
 (i.e. start the music later, or stop it while playing).</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.media.AudioManager</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.frice.utils.media.AudioPlayer</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.util.media.AudioManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.frice.util.media.AudioPlayer</span><span class="o">;</span>
 
 <span class="n">AudioPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">AudioManager</span><span class="o">.</span><span class="na">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">);</span>
 <span class="c1">// start playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 <span class="c1">// exit playing</span>
 <span class="n">player</span><span class="o">.</span><span class="na">exit</span><span class="o">();</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.getPlayer</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.media.getPlayer</span>
 
 <span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getPlayer</span><span class="p">(</span><span class="s">"./1.mp3"</span><span class="p">)</span>
 <span class="c1">// start playing
 </span><span class="n">player</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
 <span class="c1">// exit playing
 </span><span class="n">player</span><span class="p">.</span><span class="n">exit</span><span class="p">()</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.AudioManager</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.media.AudioManager</span>
 
 <span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">AudioManager</span><span class="o">.</span><span class="n">getPlayer</span><span class="o">(</span><span class="s">"./1.mp3"</span><span class="o">)</span>
 <span class="c1">// start playing
@@ -1274,15 +1274,15 @@ This is also very easy. You can create a collision box from another collision bo
 
 <p>Alternatively, you can use the JavaFX media API wrapper, called <code>MediaManager</code>.  </p>
 <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">javafx.scene.media.MediaPlayer</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.frice.utils.media.MediaManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.frice.util.media.MediaManager</span><span class="o">;</span>
 
 <span class="n">MediaPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="n">MediaManager</span><span class="o">.</span><span class="na">getMediaPlayer</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">);</span>
 <span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.getMediaPlayer</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.media.getMediaPlayer</span>
 
 <span class="kd">val</span> <span class="py">player</span> <span class="p">=</span> <span class="n">getMediaPlayer</span><span class="p">(</span><span class="s">"./res/bgm.mp3"</span><span class="p">)</span>
 <span class="n">player</span><span class="p">.</span><span class="n">play</span><span class="p">()</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.MediaManager</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.media.MediaManager</span>
 
 <span class="k">val</span> <span class="n">player</span> <span class="k">=</span> <span class="nc">MediaManager</span><span class="o">.</span><span class="n">getMediaPlayer</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">)</span>
 <span class="n">player</span><span class="o">.</span><span class="n">play</span><span class="o">()</span>
@@ -1296,34 +1296,34 @@ This is also very easy. You can create a collision box from another collision bo
 <p><br/></p>
 
 <p>And of course, you can play them directly:</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.media.MediaManager</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.util.media.MediaManager</span><span class="o">;</span>
 
 <span class="n">MediaManager</span><span class="o">.</span><span class="na">playMedia</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">);</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.playMedia</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.media.playMedia</span>
 
 <span class="n">playMedia</span><span class="p">(</span><span class="s">"./res/bgm.mp3"</span><span class="p">)</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.media.MediaManager</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.media.MediaManager</span>
 
 <span class="nc">MediaManager</span><span class="o">.</span><span class="n">playMedia</span><span class="o">(</span><span class="s">"./res/bgm.mp3"</span><span class="o">)</span>
 </code></pre><h2 id='database'>Database</h2>
 <p>FriceEngine provides a key-value based database, and there&#39;re two implementations.</p>
 <h3 id='preference'>Preference</h3>
 <p>This is the recommended database implementation.</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.data.Preference</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.util.data.Preference</span><span class="o">;</span>
 
 <span class="n">Preference</span> <span class="n">preference</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Preference</span><span class="o">(</span><span class="s">"./save.properties"</span><span class="o">);</span>
 <span class="n">preference</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">);</span>
 <span class="n">preference</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="s">"key2"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
 <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">preference</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"default value"</span><span class="o">);</span>
 <span class="kt">boolean</span> <span class="n">value2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">boolean</span><span class="o">)</span> <span class="n">preference</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.Preference</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.data.Preference</span>
 
 <span class="kd">val</span> <span class="py">preference</span> <span class="p">=</span> <span class="n">Preference</span><span class="p">(</span><span class="s">"./save.properties"</span><span class="p">)</span>
 <span class="n">preference</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">)</span>
 <span class="n">preference</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"key2"</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
 <span class="kd">val</span> <span class="py">value</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"default value"</span><span class="p">)</span> <span class="k">as</span> <span class="n">String</span>
 <span class="kd">val</span> <span class="py">value2</span> <span class="p">=</span> <span class="n">preference</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> <span class="k">as</span> <span class="n">Boolean</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.Preference</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.data.Preference</span>
 
 <span class="k">val</span> <span class="n">preference</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Preference</span><span class="o">(</span><span class="s">"./save.properties"</span><span class="o">)</span>
 <span class="n">preference</span><span class="o">.</span><span class="n">insert</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">)</span>
@@ -1352,13 +1352,13 @@ It stores value in a &quot;properties&quot; file.</p>
 <p>Additionally, you can use the <code>list()</code> method to get all the key-value pair as a list.</p>
 <h3 id='xmlpreference'>XMLPreference</h3>
 <p>It provides <code>insert</code>, <code>query</code> and <code>queryT</code> as well as <a href="#preference"><code>Preference</code></a>.</p>
-<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.frice.util.data.XMLPreference</span><span class="o">;</span>
 
 <span class="n">XMLPreference</span> <span class="n">preference</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XMLPreference</span><span class="o">(</span><span class="s">"./save.xml"</span><span class="o">);</span>
-</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span>
+</code></pre><pre class="highlight kotlin tab-kotlin"><code><span class="k">import</span> <span class="nn">org.frice.util.data.XMLPreference</span>
 
 <span class="kd">val</span> <span class="py">preference</span> <span class="p">=</span> <span class="n">XMLPreference</span><span class="p">(</span><span class="s">"./save.xml"</span><span class="p">)</span>
-</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.utils.data.XMLPreference</span>
+</code></pre><pre class="highlight scala tab-scala"><code><span class="k">import</span> <span class="nn">org.frice.util.data.XMLPreference</span>
 
 <span class="k">val</span> <span class="n">preference</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">XMLPreference</span><span class="o">(</span><span class="s">"./save.xml"</span><span class="o">)</span>
 </code></pre>
@@ -1373,7 +1373,7 @@ It stores value in a &quot;xml&quot; file.</p>
 
 <!-- ```java -->
 
-<!-- import org.frice.utils.BoolArray; -->
+<!-- import org.frice.util.BoolArray; -->
 
 <!-- BoolArray array = new BoolArray(10); -->
 
@@ -1387,7 +1387,7 @@ It stores value in a &quot;xml&quot; file.</p>
 
 <!-- ```kotlin -->
 
-<!-- import org.frice.utils.BoolArray -->
+<!-- import org.frice.util.BoolArray -->
 
 <!-- val array = BoolArray(10) -->
 
@@ -1401,7 +1401,7 @@ It stores value in a &quot;xml&quot; file.</p>
 
 <!-- ```scala -->
 
-<!-- import org.frice.utils.BoolArray -->
+<!-- import org.frice.util.BoolArray -->
 
 <!-- val array = new BoolArray(10) -->
 
