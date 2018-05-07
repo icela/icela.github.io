@@ -233,7 +233,7 @@
                     <a href="#with-eclipse" class="toc-h2 toc-link" data-title="Installation">With Eclipse</a>
                   </li>
                   <li>
-                    <a href="#with-gradle-maven-sbt" class="toc-h2 toc-link" data-title="Installation">With Gradle/Maven/SBT</a>
+                    <a href="#with-gradle-maven-sbt-ivy" class="toc-h2 toc-link" data-title="Installation">With Gradle/Maven/SBT/Ivy</a>
                     <ul class="toc-list-h3">
                       <li>
                         <a href="#customizing-jars" class="toc-h3 toc-link" data-title="Installation">Customizing jars</a>
@@ -480,33 +480,38 @@ Status: <a href="https://ci.appveyor.com/project/ice1000/friceengine"><img src="
 <li>Create or open a project</li>
 <li><a href="https://stackoverflow.com/questions/3280353/how-to-import-a-jar-in-eclipse">Import the jar</a> into your project</li>
 </ol>
-<h2 id='with-gradle-maven-sbt'>With Gradle/Maven/SBT</h2>
-<p>Newest version: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a><br>
-Downloads: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine/month.svg" alt="Month" /></a></p>
+<h2 id='with-gradle-maven-sbt-ivy'>With Gradle/Maven/SBT/Ivy</h2>
+<p>Newest version:</p>
 
-<p>View <a href="https://jitpack.io/#icela/FriceEngine">instructions on the JitPack website</a></p>
+<ul>
+<li><a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine.svg" alt="Friceengine" /></a></li>
+<li><a href="https://bintray.com/ice1000/FriceEngine/engine/_latestVersion"><img src="https://api.bintray.com/packages/ice1000/FriceEngine/engine/images/download.svg" alt="Download" /> </a>
+Downloads: <a href="https://jitpack.io/#icela/FriceEngine"><img src="https://jitpack.io/v/icela/FriceEngine/month.svg" alt="Month" /></a></li>
+</ul>
+
+<p>View <a href="https://jitpack.io/#icela/FriceEngine">instructions on JitPack website</a> or <a href="https://bintray.com/ice1000/FriceEngine/engine">instructions on Bintray website</a></p>
 <h3 id='customizing-jars'>Customizing jars</h3>
 <p>You can specify the jars you want to download, by using gradle.</p>
 
-<p>First, you&#39;ll see the newest version in the version badge above (it should be a string started with <code>v</code> like <code>v1.7.11</code>).<br>
-Let&#39;s call it <code>frice_version</code>.</p>
+<p>First, you&#39;ll see the newest version in the version badge above (it should be a string started with <code>v</code> like <code>v1.8.3</code>).<br>
+It&#39;s the newest release version, we remove the leading <code>v</code> and assign the version name <code>frice_version</code>.</p>
 
 <p>Look at your <code>build.gradle</code>. Add these codes:</p>
 <pre class="highlight gradle tab-gradle"><code><span class="k">buildscript</span> <span class="o">{</span>
-  <span class="n">ext</span><span class="o">.</span><span class="na">frice_version</span> <span class="o">=</span> <span class="s1">'v1.7.11'</span> <span class="c1">// replace with the newest one</span>
+  <span class="n">ext</span><span class="o">.</span><span class="na">frice_version</span> <span class="o">=</span> <span class="s1">'1.8.3'</span> <span class="c1">// replace with the newest one</span>
 <span class="o">}</span>
 </code></pre>
 <p><br/><br/><br/></p>
 
 <p>And choose to add some of these as your dependecies:</p>
 <pre class="highlight gradle tab-gradle"><code><span class="c1">// old, necessary</span>
-<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version"</span>
+<span class="n">compile</span> <span class="s2">"org.frice:engine:$frice_version"</span>
 <span class="c1">// new, optional, if you speak Kotlin</span>
-<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:sources"</span>
+<span class="n">compile</span> <span class="s2">"org.frice:engine:$frice_version:sources"</span>
 <span class="c1">// new, for java users</span>
-<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:all"</span>
+<span class="n">compile</span> <span class="s2">"org.frice:engine:$frice_version:all"</span>
 <span class="c1">// new, optional</span>
-<span class="n">compile</span> <span class="s2">"com.github.icela:FriceEngine:$frice_version:javadoc"</span>
+<span class="n">compile</span> <span class="s2">"org.frice:engine:$frice_version:javadok"</span>
 </code></pre>
 <p>The four dependecies are described in the table below:</p>
 
@@ -529,7 +534,7 @@ Let&#39;s call it <code>frice_version</code>.</p>
 <td style="text-align: left">The fat jar (about 1600kb). <br/> You will be able to run your code only with this jar in the classpath. <br/> If you use this, don&#39;t use the one with no suffix.</td>
 </tr>
 <tr>
-<td style="text-align: center"><code>javadoc</code></td>
+<td style="text-align: center"><code>javadok</code></td>
 <td style="text-align: left">The jar containing FriceEngine&#39;s javadoc.</td>
 </tr>
 </tbody></table>

@@ -1,0 +1,680 @@
+<h1 id='api-reference'>API reference</h1>
+<p>This is the full API reference of frice engine.<br/>
+Some classes and interface are private, so they are not shown here.<br/></p>
+<h2 id='abstract-org-frice-game-abstractgame-also-class-org-frice-game-game'>Abstract: org.frice.game.AbstractGame (also Class: org.frice.game.Game)</h2>
+<p><strong>Do not override the constructor, anything about initialization please put them into &quot;onInit()&quot;!</strong></p>
+<h3 id='demos'>Demos</h3>
+<p>See <a href="../README.md">README</a>.</p>
+<h3 id='life-cycle-methods'>Life cycle methods</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">onInit()</td>
+<td style="text-align: right">Invoked while initializing</td>
+</tr>
+<tr>
+<td style="text-align: left">onLastInit()</td>
+<td style="text-align: right">Invoked before starting refreshing</td>
+</tr>
+<tr>
+<td style="text-align: left">onExit()</td>
+<td style="text-align: right">Invoked while exiting (NOTE: engine does not perform process termination automatically)</td>
+</tr>
+<tr>
+<td style="text-align: left">onRefresh()</td>
+<td style="text-align: right">Invoked after game window is refreshed, if not paused)</td>
+</tr>
+<tr>
+<td style="text-align: left">onMouse(OnClickEvent)</td>
+<td style="text-align: right">Invoked while clicking in game window</td>
+</tr>
+<tr>
+<td style="text-align: left">buttonPressed(OnMouseEvent)</td>
+<td style="text-align: right">Invoked when a mouse event arrives(moving, pressing, etc)</td>
+</tr>
+<tr>
+<td style="text-align: left">onLoseFocus(OnWindowEvent)</td>
+<td style="text-align: right">Invoked when game window blurs</td>
+</tr>
+<tr>
+<td style="text-align: left">onFocus(OnWindowEvent)</td>
+<td style="text-align: right">Invoke when game window gets focus</td>
+</tr>
+<tr>
+<td style="text-align: left">customDraw(Graphics2D)</td>
+<td style="text-align: right">Override to draw something after everything was drawn.</td>
+</tr>
+</tbody></table>
+<h3 id='apis'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">addObject(FObject)</td>
+<td style="text-align: right">Adds an object to game window</td>
+</tr>
+<tr>
+<td style="text-align: left">addObject(Array)</td>
+<td style="text-align: right">Adds objects to game window</td>
+</tr>
+<tr>
+<td style="text-align: left">addObject(List)</td>
+<td style="text-align: right">Adds objects to game window</td>
+</tr>
+<tr>
+<td style="text-align: left">removeObject(FObject)</td>
+<td style="text-align: right">Removes an object from screen</td>
+</tr>
+<tr>
+<td style="text-align: left">removeObject(Array)</td>
+<td style="text-align: right">Removes objects from screen</td>
+</tr>
+<tr>
+<td style="text-align: left">removeObject(List)</td>
+<td style="text-align: right">Removes objects from screen</td>
+</tr>
+<tr>
+<td style="text-align: left">addTimeListener(FTimeListener)</td>
+<td style="text-align: right">Adds a timer listener. It will be invoked when timeouts.</td>
+</tr>
+<tr>
+<td style="text-align: left">addTimeListener(Array)</td>
+<td style="text-align: right">Add timer listeners. It will be invoked when timeouts.</td>
+</tr>
+<tr>
+<td style="text-align: left">addTimeListener(List)</td>
+<td style="text-align: right">Add timer listeners. It will be invoked when timeouts.</td>
+</tr>
+<tr>
+<td style="text-align: left">removeTimeListener(FTimeListener)</td>
+<td style="text-align: right">Remove a object from timer listeners.</td>
+</tr>
+<tr>
+<td style="text-align: left">removeTimeListener(Array)</td>
+<td style="text-align: right">Remove objects from timer listeners.</td>
+</tr>
+<tr>
+<td style="text-align: left">removeTimeListener(List)</td>
+<td style="text-align: right">Remove objects from timer listeners.</td>
+</tr>
+<tr>
+<td style="text-align: left">setBack(FResource)</td>
+<td style="text-align: right">Sets window background</td>
+</tr>
+<tr>
+<td style="text-align: left">setCursor(ImageObject)</td>
+<td style="text-align: right">Sets the cursor as an ImageObject. You can operate it like any other objects. This will call <code>addObject()</code> by itself.</td>
+</tr>
+<tr>
+<td style="text-align: left">setCursor(ImageResource)</td>
+<td style="text-align: right">Create an ImageObject and invoke the last method</td>
+</tr>
+<tr>
+<td style="text-align: left">getScreenCut(): ImageResource</td>
+<td style="text-align: right">Returns the current screenshot.</td>
+</tr>
+<tr>
+<td style="text-align: left">setAutoGC(Boolean)</td>
+<td style="text-align: right">if true, the engine will remove objects far from the game window.</td>
+</tr>
+<tr>
+<td style="text-align: left">setBounds(Int, Int, Int, Int)</td>
+<td style="text-align: right"><em>Inherited from Frame</em></td>
+</tr>
+<tr>
+<td style="text-align: left">setTitle(String)</td>
+<td style="text-align: right"><em>Inherited from Frame</em></td>
+</tr>
+<tr>
+<td style="text-align: left">setLoseFocusChangeColor(Boolean)</td>
+<td style="text-align: right">if true, the game scene color will become darker when lose focus.</td>
+</tr>
+<tr>
+<td style="text-align: left">getMouse</td>
+<td style="text-align: right">return the mouse as an object</td>
+</tr>
+</tbody></table>
+<h2 id='abstract-org-frice-game-obj-fobject'>Abstract: org.frice.game.obj.FObject</h2>
+<p>Represents a game object.</p>
+<h3 id='apis-2'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">getAnims(): List&lt;(FAnim)&gt;</td>
+<td style="text-align: right">get the list of anims, you can add and remove animations via this.</td>
+</tr>
+<tr>
+<td style="text-align: left">addAnim(FAnim)</td>
+<td style="text-align: right">same as getAnims().add()</td>
+</tr>
+<tr>
+<td style="text-align: left">getTargets(): List&lt;(Pair&lt;(FObject, Event)&gt;)&gt;</td>
+<td style="text-align: right">get a list of pairs, it has an object reference and an event interface. when collision occurs, the interface will be called.</td>
+</tr>
+<tr>
+<td style="text-align: left">addCollider(FObject, Event)</td>
+<td style="text-align: right">same as getTargets().add(FObject to Event)</td>
+</tr>
+<tr>
+<td style="text-align: left">addForce(Double, Double)</td>
+<td style="text-align: right">add a force to this object(actually you added an accelerate anim to it). It&#39;s force, and you had better set the mass first.</td>
+</tr>
+<tr>
+<td style="text-align: left">setMass(Double)</td>
+<td style="text-align: right">set the mass. It&#39;s safe, if you set an unsafe value, it will ignore the operation automatically. :joy:</td>
+</tr>
+</tbody></table>
+<h3 id='demos-2'>Demos</h3>
+<p>see Demo1.java in the demo repo.</p>
+<h3 id='members'>Members</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name: Type</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id: Int</td>
+<td style="text-align: right">Unique ID</td>
+</tr>
+<tr>
+<td style="text-align: left">x: Int</td>
+<td style="text-align: right">Location x</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Int</td>
+<td style="text-align: right">Location y</td>
+</tr>
+<tr>
+<td style="text-align: left">anims: ArrayList<FAnim></td>
+<td style="text-align: right">Animation list of this object. Engine will play them if game is not paused.</td>
+</tr>
+<tr>
+<td style="text-align: left">targets: ArrayList&lt;(Pair<FObject, OnCollideEvent>)&gt;</td>
+<td style="text-align: right">Param <code>FObject</code> is the target object, <code>OnCollideEvent</code> is a lambda which will be called when owner collides the target object.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-obj-sub-imageobject'>Class: org.frice.game.obj.sub.ImageObject</h2><h3 id='demos-3'>Demos</h3>
+<p>see Demo1.java in the demo repo.</p>
+<h3 id='parent'>Parent</h3>
+<p>org.frice.game.obj.FObject</p>
+<h3 id='constructors'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">res: ImageResource</td>
+<td style="text-align: right">image resource that will display on game scene</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-obj-sub-shapeobject'>Class: org.frice.game.obj.sub.ShapeObject</h2><h3 id='demos-4'>Demos</h3>
+<p>see Demo7.java in the demo repo.</p>
+<h3 id='parent-2'>Parent</h3>
+<p>org.frice.game.obj.FObject</p>
+<h3 id='constructors-2'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">res: ColorResource</td>
+<td style="text-align: right">Color of this object.</td>
+</tr>
+<tr>
+<td style="text-align: left">shape: FShape</td>
+<td style="text-align: right">Shape of this object</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-obj-button-simplebutton'>Class: org.frice.game.obj.button.SimpleButton</h2>
+<p>A Button.</p>
+<h3 id='constructors-3'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">color: ColorResource</td>
+<td style="text-align: right">the color of the button</td>
+</tr>
+<tr>
+<td style="text-align: left">text: String</td>
+<td style="text-align: right">the text on button</td>
+</tr>
+<tr>
+<td style="text-align: left">x: Double</td>
+<td style="text-align: right">position</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Double</td>
+<td style="text-align: right">position</td>
+</tr>
+<tr>
+<td style="text-align: left">width: Double</td>
+<td style="text-align: right">width</td>
+</tr>
+<tr>
+<td style="text-align: left">height: Double</td>
+<td style="text-align: right">height</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-obj-button-imagebutton'>Class: org.frice.game.obj.button.ImageButton</h2>
+<p>A Button containing an image.</p>
+<h3 id='constructors-4'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">imageNormal: ImageResource</td>
+<td style="text-align: right">this will be displayed while button is not pressed.</td>
+</tr>
+<tr>
+<td style="text-align: left">imagePressed: ImageResource</td>
+<td style="text-align: right">the image will be displayed while button is pressed.</td>
+</tr>
+<tr>
+<td style="text-align: left">x: Double</td>
+<td style="text-align: right">position</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Double</td>
+<td style="text-align: right">position</td>
+</tr>
+<tr>
+<td style="text-align: left">width: Double</td>
+<td style="text-align: right">width</td>
+</tr>
+<tr>
+<td style="text-align: left">height: Double</td>
+<td style="text-align: right">height</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-obj-effects-particleeffect'>Class: org.frice.game.obj.effects.ParticleEffect</h2>
+<p>An object to display particles.</p>
+<h2 id='abstract-org-frice-game-resource-imageresource'>Abstract: org.frice.game.resource.ImageResource</h2><h3 id='members-2'>Members</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name: Type</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">image: Image</td>
+<td style="text-align: right">Image object.</td>
+</tr>
+</tbody></table>
+<h3 id='apis-3'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fun fromImage(image: BufferedImage)</td>
+<td style="text-align: right">create an image from bufferedImage</td>
+</tr>
+<tr>
+<td style="text-align: left">fun fromPath(path: String)</td>
+<td style="text-align: right">create an image from file path</td>
+</tr>
+<tr>
+<td style="text-align: left">fun fromWeb(url: String)</td>
+<td style="text-align: right">create an image from url as path</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-resource-fileimageresource'>Class: org.frice.game.resource.FileImageResource</h2><h3 id='constructors-5'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">file: File</td>
+<td style="text-align: right">Image file handler to the image file.</td>
+</tr>
+<tr>
+<td style="text-align: left">file: String</td>
+<td style="text-align: right">Image path to the image file.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-resource-webimageresource'>Class: org.frice.game.resource.WebImageResource</h2><h3 id='constructors-6'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">url: String</td>
+<td style="text-align: right">URL of the image</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-resource-frameimageresource'>Class: org.frice.game.resource.FrameImageResource</h2>
+<p>Implements frame animation.</p>
+<h3 id='constructors-7'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">game: Game</td>
+<td style="text-align: right">Game context, just pass <code>this</code> in your own Game class</td>
+</tr>
+<tr>
+<td style="text-align: left">list: List<ImageResource>, Array<ImageResource></td>
+<td style="text-align: right">List of images</td>
+</tr>
+<tr>
+<td style="text-align: left">div: Int</td>
+<td style="text-align: right">Division time between two images</td>
+</tr>
+</tbody></table>
+<h3 id='apis-4'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">setLoop(Boolean)</td>
+<td style="text-align: right">Set whether the animation should loop.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-resource-image-partimageresource'>Class: org.frice.game.resource.image.PartImageResource</h2>
+<p>Create an image resource from a part of another image.</p>
+<h2 id='class-org-frice-game-resource-colorresource'>Class: org.frice.game.resource.ColorResource</h2><h3 id='constructors-8'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">color: Color, Int, String</td>
+<td style="text-align: right">color</td>
+</tr>
+</tbody></table>
+<h3 id='built-in-colors'>Built-in colors</h3><pre class="highlight plaintext"><code>GREEN, BLUE, GRAY, DARK_GRAY, LIGHT_GRAY, WHITE, RED, BLACK, CYAN, MAGENTA, YELLOW, SHIT_YELLOW, ORANGE, PINK
+and so on!
+</code></pre><h2 id='static-object-org-frice-game-utils-message-flog'>Static object: org.frice.game.utils.message.FLog</h2><h3 id='apis-5'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th>Alias</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">v(e: Any?)</td>
+<td>verbose</td>
+<td style="text-align: right">Log a verbose message</td>
+</tr>
+<tr>
+<td style="text-align: left">d(e: Any?)</td>
+<td>debug</td>
+<td style="text-align: right">Log a debug message</td>
+</tr>
+<tr>
+<td style="text-align: left">i(e: Any?)</td>
+<td>info</td>
+<td style="text-align: right">Log a info message</td>
+</tr>
+<tr>
+<td style="text-align: left">w(e: Any?)</td>
+<td>warning</td>
+<td style="text-align: right">Log a warning message</td>
+</tr>
+<tr>
+<td style="text-align: left">e(e: Any?)</td>
+<td>error</td>
+<td style="text-align: right">Log an error message</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-utils-time-ftimer'>Class: org.frice.game.utils.time.FTimer</h2>
+<p>I&#39;m afraid that I can&#39;t doc this function very well for my poor English, so please view its usage in demos.</p>
+<h3 id='constructors-9'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">time: Int</td>
+<td style="text-align: right">Interval between two invokes</td>
+</tr>
+</tbody></table>
+<h3 id='apis-6'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ended()</td>
+<td style="text-align: right">Returns whether time&#39;s up.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-utils-time-ftimelistener'>Class: org.frice.game.utils.time.FTimeListener</h2><h3 id='parent-3'>Parent</h3>
+<p>org.frice.game.utils.time.FTimer</p>
+<h3 id='constructors-10'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timeUp: () -&gt; Unit, OnTimeEvent</td>
+<td style="text-align: right">function that will be invoked when time&#39;s up(<code>ended()</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='class-xmlpreference'>Class: XMLPreference</h2>
+<p>Operates an xml file for config.</p>
+<h3 id='constructors-11'>Constructors</h3>
+<p>All private. Please use the factory methods <code>getPreference()</code>.</p>
+<h3 id='apis-7'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">getPreference(file: File)<br />getPreference(file: String)</td>
+<td style="text-align: right">Creates a instance from a file handler, or path to the file.</td>
+</tr>
+<tr>
+<td style="text-align: left">insert(key: String, value: Any?)</td>
+<td style="text-align: right">Insert a key-value pair into the file</td>
+</tr>
+<tr>
+<td style="text-align: left">query(key: String, value: Any)</td>
+<td style="text-align: right">Query a value by <code>key</code> from the file</td>
+</tr>
+</tbody></table>
+<h2 id='class-preference'>Class:Preference</h2><h3 id='apis-8'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">list()</td>
+<td style="text-align: right">get a list of pair</td>
+</tr>
+<tr>
+<td style="text-align: left">insert(key: String, value: Any?)</td>
+<td style="text-align: right">Insert a key-value pair into the file</td>
+</tr>
+<tr>
+<td style="text-align: left">query(key: String, value: Any)</td>
+<td style="text-align: right">Query a value by <code>key</code> from the file</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-utils-message-fdialog'>Class: org.frice.game.utils.message.FDialog</h2>
+<p>Shows dialogs on screen. Quite simple to use, I think there&#39;s no need to write a doc for it.<br/>
+Constructor needs a context.
+See <a href="org/frice/game/utils/message/FDialog.kt">FDialog.kt</a>.</p>
+<h2 id='org-frice-game-utils-audio-audiomanager'>org.frice.game.utils.audio.AudioManager</h2>
+<p>Singleton.<br/>
+Plays audio. However background music isn&#39;t recommended.</p>
+<h3 id='apis-9'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">play(file: File)<br />play(file: String)</td>
+<td style="text-align: right">Play the wav file specified in arg <code>file</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left">getPlayer(file: File)<br />getPlayer(file: String)</td>
+<td style="text-align: right">Returns the player thread(for pausing, stopping, etc.)</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-utils-audio-audioplayer'>Class: org.frice.game.utils.audio.AudioPlayer</h2>
+<p>The audio player thread.</p>
+<h3 id='apis-10'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">start()</td>
+<td style="text-align: right">Starts playing</td>
+</tr>
+<tr>
+<td style="text-align: left">exit()</td>
+<td style="text-align: right">Stops playing</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-anim-move-simplemove'>Class: org.frice.game.anim.move.SimpleMove</h2><h3 id='constructors-12'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">x: Int</td>
+<td style="text-align: right">Pixels that the owner should move by <strong>per second</strong>, horizontally.</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Int</td>
+<td style="text-align: right">Pixels that the owner should move by <strong>per second</strong>, vertically.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-anim-move-accuratemove'>Class: org.frice.game.anim.move.AccurateMove</h2>
+<p>a more specific &quot;simple move&quot;.</p>
+<h3 id='constructors-13'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">x: Double</td>
+<td style="text-align: right">horizontally.</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Double</td>
+<td style="text-align: right">vertically.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-anim-move-acceleratemove'>Class: org.frice.game.anim.move.AccelerateMove</h2><h3 id='demos-5'>Demos</h3>
+<p>See <a href="demos/demo/Demo6.java">demos/demo/Demo6.java</a>, <a href="demos/demo/Demo7.java">demos/demo/Demo7.java</a></p>
+<h3 id='constructors-14'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">x: Int</td>
+<td style="text-align: right">Pixels that the owner&#39;s speed should be increased by <strong>per second</strong>, horizontally.</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Int</td>
+<td style="text-align: right">Pixels that the owner&#39;s speed should be increased by <strong>per second</strong>, vertically.</td>
+</tr>
+</tbody></table>
+<h3 id='apis-11'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">getGravity(g: Double)<br/>getGravity()</td>
+<td style="text-align: right">Returns an <code>AccelerateMove</code> instance which y = g  (default 10) and x = 0</td>
+</tr>
+</tbody></table>
+<h2 id='abstract-org-frice-game-anim-move-custommove'>Abstract:org.frice.game.anim.move.CustomMove</h2>
+<p>Defines a user-customized move.</p>
+<h3 id='apis-12'>APIs</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Method</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">getXDelta(timeFromBegin: Double): Double</td>
+<td style="text-align: right">Receives time in seconds elapsed since creation of the owner. Returns pixels that the owner should move by, horizontally.</td>
+</tr>
+<tr>
+<td style="text-align: left">getYDelta(timeFromBegin: Double): Double</td>
+<td style="text-align: right">same as the one above, but vertically.</td>
+</tr>
+</tbody></table>
+<h2 id='class-org-frice-game-anim-scale-simplescale'>Class: org.frice.game.anim.scale.SimpleScale</h2><h3 id='constructors-15'>Constructors</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Param</th>
+<th style="text-align: right">Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">x: Double</td>
+<td style="text-align: right">How many times bigger that the owner should scale per second, horizontally.</td>
+</tr>
+<tr>
+<td style="text-align: left">y: Double</td>
+<td style="text-align: right">How many times bigger that the owner should scale per second, vertically.</td>
+</tr>
+</tbody></table>
